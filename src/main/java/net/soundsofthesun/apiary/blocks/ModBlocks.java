@@ -29,7 +29,7 @@ public class ModBlocks {
             ExtractorBlock::new,
             BlockBehaviour.Properties.of()
                     .noOcclusion()
-                    .sound(SoundType.WOOD)
+                    .sound(SoundType.IRON)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F)
                     .ignitedByLava(),

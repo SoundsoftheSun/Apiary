@@ -6,6 +6,10 @@
 - Beekeeper Workstation: Honey Extractor/strainer/something
   - [ ] Use with honey bottle, turns into honey fluid, pick up with bucket
     - Removed, reworking
+  - Honey Extractor
+    - Centrifugal design
+    - Coal-powered spinner or manual hand crank?
+    - BE drips into custom honey-catching pan?
 - Hive Tool
   - [x] Replace shears as the ideal tool for harvesting honey
   - [x] Pick up full hives like silk touch
@@ -36,3 +40,4 @@
   - Get from above armor or from contact with liquid honey
     - Slows you down
     - Lets you stick to surfaces? idk
+- Brewing honey bucket to honey tonic? 
