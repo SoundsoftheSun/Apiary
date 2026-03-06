@@ -19,7 +19,7 @@
   - Generates in flower biomes
 - Wearable bee suit / veil
   - [x] Prevents bee anger on harvest
-  - Reduced damage from angry bees
+  - [x] Reduced damage from angry bees
 - Advancements
 
 # Crafting Items
