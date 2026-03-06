@@ -5,22 +5,27 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.soundsofthesun.apiary.blocks.ModBlocks;
 import net.soundsofthesun.apiary.blocks.ModProperties;
 import net.soundsofthesun.apiary.effects.ModEffects;
+import org.jspecify.annotations.Nullable;
 
 public class DripPanBlock extends Block {
     public DripPanBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(ModProperties.ACTIVE_PROPERTY, ModProperties.ACTIVE_STATE.ON));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(ModProperties.ACTIVE_PROPERTY, ModProperties.ACTIVE_STATE.OFF));
     }
 
     @Override
@@ -28,6 +33,14 @@ public class DripPanBlock extends Block {
         if (state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON && entity.getY()-pos.getY() < 0.33 && entity instanceof LivingEntity livingEntity) {
             livingEntity.addEffect(new MobEffectInstance(ModEffects.HONEY_REGENERATION, 100));
         }
+    }
+
+    @Override
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
+        if (state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON) {
+            level.setBlockAndUpdate(pos, ModBlocks.HONEY_FLUID_BLOCK.defaultBlockState());
+        }
+        super.playerDestroy(level, player, pos, state, blockEntity, tool);
     }
 
     @Override
