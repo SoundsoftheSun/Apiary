@@ -21,10 +21,16 @@ public class ApiaryItemTags extends FabricTagProvider.ItemTagProvider {
 
     public static final TagKey<Item> BEE_PROTECTION = TagKey.create(Registries.ITEM, Apiary.id("bee_protection"));
 
+    public static final TagKey<Item> REPAIRS_BEE_PROTECTION = TagKey.create(Registries.ITEM, Apiary.id("repairs_bee_protection"));
+
     public static final TagKey<Item> BEE_STUFF = TagKey.create(Registries.ITEM, Apiary.id("bee_stuff"));
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+
+        valueLookupBuilder(REPAIRS_BEE_PROTECTION)
+                .add(ModItems.MESH);
+
         valueLookupBuilder(HONEY_HARVESTERS)
                 .add(Items.SHEARS)
                 .add(ModItems.HIVE_TOOL);
