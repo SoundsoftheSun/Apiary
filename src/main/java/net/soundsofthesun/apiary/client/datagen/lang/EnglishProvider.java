@@ -39,7 +39,7 @@ public class EnglishProvider extends FabricLanguageProvider {
                 "Beekeeper");
 
         translationBuilder.add("effect."+MOD_ID+".honey_regeneration",
-                "Honey Regeneration");//TODO pick a better name
+                "Apitherapy");//https://en.wikipedia.org/wiki/Apitherapy
 
         translationBuilder.add("effect."+MOD_ID+".honey_sticky",
                 "Sticky");

@@ -39,7 +39,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable, Wa
         super(entityType, level);
     }
 
-    // Copy movement behavior for lava, TODO custom movement behavior in honey
+    // Copy movement behavior for lava
     @WrapOperation(method = "shouldTravelInFluid", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;isInLava()Z"))
     boolean sun$isInHoney(LivingEntity instance, Operation<Boolean> original) {
         return original.call(instance) || this.updateFluidHeightAndDoFluidPushing(ApiaryFluidTags.HONEY_TAG, 0.014D);

@@ -28,7 +28,6 @@ public class ModVillagers {
         PointOfInterestHelper.register(Apiary.id("beekeeper_poi"),1, 1, ModBlocks.HONEY_EXTRACTOR);
         Registry.register(BuiltInRegistries.VILLAGER_PROFESSION, BEEKEEPER, new VillagerProfession(Component.translatable(Apiary.MOD_ID+".villager.beekeeper"), entry -> entry.is(BEEKEEPER_POI), entry -> entry.is(BEEKEEPER_POI), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.BEE_STING)); //TODO sound
 
-        // TODO trades
         // Level 1
         TradeOfferHelper.registerVillagerOffers(BEEKEEPER, 1, factories -> {
             factories.add((world,entity, random) -> new MerchantOffer(
