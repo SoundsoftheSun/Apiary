@@ -8,7 +8,7 @@
     - Removed, reworking
 - Hive Tool
   - [x] Replace shears as the ideal tool for harvesting honey
-  - Pick up full hives like silk touch
+  - [x] Pick up full hives like silk touch
 - Bucket of honey + honey fluid
   - [x] Slows movement
   - [x] Flows farther in Nether
