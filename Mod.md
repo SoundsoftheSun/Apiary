@@ -12,8 +12,8 @@
 - Bucket of honey + honey fluid
   - [x] Slows movement
   - [x] Flows farther in Nether
-  - Prevents fall damage in Nether
-  - Increased natural regeneration in Overworld
+  - [x] Prevents fall damage in Nether
+  - [x] Regeneration effect when in honey
 - Custom village structure
   - Generates in flower biomes
 - Wearable bee suit / veil

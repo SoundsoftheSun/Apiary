@@ -38,11 +38,17 @@ public class EnglishProvider extends FabricLanguageProvider {
         translationBuilder.add(MOD_ID+".villager.beekeeper",
                 "Beekeeper");
 
+        translationBuilder.add("effect."+MOD_ID+".honey_regeneration",
+                "Honey Regeneration");//TODO pick a better name
+
         translationBuilder.add("tag.item."+MOD_ID+".honey_harvesters",
                 "Honey Harvesters");
 
         translationBuilder.add("tag.item."+MOD_ID+".bee_protection",
                 "Bee Protection");
+
+        translationBuilder.add("tag.item."+MOD_ID+".repairs_bee_protection",
+                "Repairs Bee Protection");
 
         translationBuilder.add("tag.item."+MOD_ID+".bee_stuff",
                 "Beekeeping Items");
