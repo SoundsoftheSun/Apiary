@@ -13,12 +13,12 @@ public class ApiaryBlockTags extends FabricTagProvider.BlockTagProvider {
         super(output, registriesFuture);
     }
 
-
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.HONEY_EXTRACTOR)
+                .add(ModBlocks.DRIP_PAN)
                 .setReplace(false);
-
     }
+
 }

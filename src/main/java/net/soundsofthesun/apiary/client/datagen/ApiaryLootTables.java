@@ -15,5 +15,6 @@ public class ApiaryLootTables extends FabricBlockLootTableProvider {
     @Override
     public void generate() {
         dropSelf(ModBlocks.HONEY_EXTRACTOR);
+        dropSelf(ModBlocks.DRIP_PAN);
     }
 }
