@@ -18,8 +18,6 @@ public class ModItems {
 
     public static final Item HIVE_TOOL = register("hive_tool", Item::new, new Item.Properties().durability(212));
 
-    // TODO reduce damage specifically for bees
-    // Not sure the most efficient way to do this atm
     public static final Item VEIL = register("beekeeper_veil", Item::new, new Item.Properties().equippable(EquipmentSlot.HEAD).durability(212).rarity(Rarity.RARE));
 
     public static final Item MESH = register("mesh", Item::new, new Item.Properties());
