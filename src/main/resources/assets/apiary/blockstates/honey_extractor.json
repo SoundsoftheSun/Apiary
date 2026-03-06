@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "honey_state=none": {
+      "model": "apiary:block/honey_extractor"
+    },
+    "honey_state=bottom": {
+      "model": "apiary:block/honey_extractor_honey_bottom"
+    },
+    "honey_state=top": {
+      "model": "apiary:block/honey_extractor_honey_top"
+    },
+    "honey_state=both": {
+      "model": "apiary:block/honey_extractor_honey_bottom_top"
+    }
+  }
+}

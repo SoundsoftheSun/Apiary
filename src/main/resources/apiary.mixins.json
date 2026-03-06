@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.soundsofthesun.apiary.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BeehiveBlockMixin",
+    "LivingEntityMixin"
+  ],
+  "client": [
+    "VillagerProfessionLayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

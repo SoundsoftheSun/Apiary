@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "apiary:block/honey_extractor"
+  }
+}

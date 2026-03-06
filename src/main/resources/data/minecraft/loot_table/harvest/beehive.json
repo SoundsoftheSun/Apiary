@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:block_interact",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:honeycomb",
+          "conditions": [],
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 4,
+              "add": true,
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "items": "apiary:hive_tool"
+                  }
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": 2,
+              "add": true,
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "items": "minecraft:shears"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "functions": [],
+  "random_sequence": "minecraft:harvest/beehive"
+}
