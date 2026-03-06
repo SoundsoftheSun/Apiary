@@ -35,13 +35,22 @@ public class ApiaryRecipes extends FabricRecipeProvider {
                         .save(output);
 
                 shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEY_EXTRACTOR)
-                        .pattern("wbw")
+                        .pattern("wxw")
                         .pattern("wmw")
                         .pattern("wcw")
-                        .define('b', Items.BREWING_STAND)
-                        .define('w', ItemTags.LOGS)
+                        .define('w', Items.IRON_INGOT)
+                        .define('x', Items.HONEYCOMB)
                         .define('m', ModItems.MESH)
                         .define('c', Items.CAULDRON)
+                        .group(Apiary.MOD_ID)
+                        .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
+                        .save(output);
+
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DRIP_PAN)
+                        .pattern("   ")
+                        .pattern("w w")
+                        .pattern("www")
+                        .define('w', Items.IRON_INGOT)
                         .group(Apiary.MOD_ID)
                         .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
                         .save(output);

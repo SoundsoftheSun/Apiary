@@ -23,6 +23,9 @@ public class EnglishProvider extends FabricLanguageProvider {
         translationBuilder.add("block."+MOD_ID+".honey_extractor",
                 "Honey Extractor");
 
+        translationBuilder.add("block."+MOD_ID+".drip_pan",
+                "Drip Pan");
+
         translationBuilder.add("item."+MOD_ID+".hive_tool",
                 "Hive Tool");
 

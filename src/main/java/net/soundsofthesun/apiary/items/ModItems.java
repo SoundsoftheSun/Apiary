@@ -26,6 +26,7 @@ public class ModItems {
 
     public static final CreativeModeTab.DisplayItemsGenerator TAB_ITEMS = (params, output) -> {
         output.accept(ModBlocks.HONEY_EXTRACTOR);
+        output.accept(ModBlocks.DRIP_PAN);
         output.accept(ModItems.HONEY_BUCKET);
         output.accept(ModItems.HIVE_TOOL);
         output.accept(ModItems.VEIL);

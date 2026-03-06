@@ -18,6 +18,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.soundsofthesun.apiary.Apiary;
 import net.soundsofthesun.apiary.blocks.extractor.ExtractorBlock;
 import net.soundsofthesun.apiary.blocks.fluid.HoneyFluid;
+import net.soundsofthesun.apiary.blocks.pan.DripPanBlock;
 
 import java.util.function.Function;
 
@@ -33,6 +34,18 @@ public class ModBlocks {
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F)
                     .ignitedByLava(),
+            true
+    );
+
+    //TODO drip pan behavior
+    public static final Block DRIP_PAN = register(
+            "drip_pan",
+            DripPanBlock::new,
+            BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .sound(SoundType.IRON)
+                    .instrument(NoteBlockInstrument.BASS)
+                    .strength(2.0F),
             true
     );
 
