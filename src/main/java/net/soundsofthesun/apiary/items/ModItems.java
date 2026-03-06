@@ -7,31 +7,20 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.item.equipment.EquipmentAsset;
-import net.minecraft.world.item.equipment.EquipmentAssets;
 import net.soundsofthesun.apiary.Apiary;
 import net.soundsofthesun.apiary.blocks.ModBlocks;
-import net.soundsofthesun.apiary.client.datagen.ApiaryItemTags;
 
-import java.util.Map;
 import java.util.function.Function;
 
 public class ModItems {
-
-    public static final ResourceKey<EquipmentAsset> VEIL_MATERIAL_KEY = ResourceKey.create(EquipmentAssets.ROOT_ID, Apiary.id("beekeeper_armor"));
-
-    public static final ArmorMaterial VEIL_MATERIAL = new ArmorMaterial(21, Map.of(ArmorType.HELMET, 1), 1, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, ApiaryItemTags.REPAIRS_BEE_PROTECTION, VEIL_MATERIAL_KEY);
 
     public static final Item HIVE_TOOL = register("hive_tool", Item::new, new Item.Properties().durability(212));
 
     // TODO reduce damage specifically for bees
     // Not sure the most efficient way to do this atm
-    public static final Item VEIL = register("beekeeper_veil", Item::new, new Item.Properties().humanoidArmor(VEIL_MATERIAL, ArmorType.HELMET).rarity(Rarity.RARE));
+    public static final Item VEIL = register("beekeeper_veil", Item::new, new Item.Properties().equippable(EquipmentSlot.HEAD).durability(212).rarity(Rarity.RARE));
 
     public static final Item MESH = register("mesh", Item::new, new Item.Properties());
 
