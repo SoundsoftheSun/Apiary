@@ -1,17 +1,38 @@
 package net.soundsofthesun.apiary.blocks.pan;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.soundsofthesun.apiary.blocks.ModProperties;
+import net.soundsofthesun.apiary.effects.ModEffects;
 
 public class DripPanBlock extends Block {
     public DripPanBlock(Properties properties) {
         super(properties);
+        this.registerDefaultState(this.getStateDefinition().any().setValue(ModProperties.ACTIVE_PROPERTY, ModProperties.ACTIVE_STATE.ON));
+    }
+
+    @Override
+    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier applier, boolean intersects) {
+        if (state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON && entity.getY()-pos.getY() < 0.33 && entity instanceof LivingEntity livingEntity) {
+            livingEntity.addEffect(new MobEffectInstance(ModEffects.HONEY_REGENERATION, 100));
+        }
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(ModProperties.ACTIVE_PROPERTY);
     }
 
     private VoxelShape makeShape() {

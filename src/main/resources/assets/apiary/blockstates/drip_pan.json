@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "active=off": {
       "model": "apiary:block/drip_pan"
+    },
+    "active=on": {
+      "model": "apiary:block/drip_pan_full"
     }
   }
 }

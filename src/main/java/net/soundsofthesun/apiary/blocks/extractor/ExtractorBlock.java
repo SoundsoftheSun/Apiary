@@ -27,7 +27,7 @@ public class ExtractorBlock extends BaseEntityBlock {
     public ExtractorBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any()
-                .setValue(ModProperties.EXTRACTOR_PROPERTY, ModProperties.EXTRACTOR_STATE.OFF)
+                .setValue(ModProperties.ACTIVE_PROPERTY, ModProperties.ACTIVE_STATE.OFF)
                 .setValue(HorizontalDirectionalBlock.FACING, Direction.NORTH)
         );
     }
@@ -39,7 +39,7 @@ public class ExtractorBlock extends BaseEntityBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ModProperties.EXTRACTOR_PROPERTY);
+        builder.add(ModProperties.ACTIVE_PROPERTY);
         builder.add(HorizontalDirectionalBlock.FACING);
     }
 
