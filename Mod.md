@@ -14,6 +14,7 @@
   - [x] Flows farther in Nether
   - [x] Prevents fall damage in Nether
   - [x] Regeneration effect when in honey
+    - [x] Slowness debuff when regeneration expires
 - Custom village structure
   - Generates in flower biomes
 - Wearable bee suit / veil

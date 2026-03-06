@@ -41,6 +41,9 @@ public class EnglishProvider extends FabricLanguageProvider {
         translationBuilder.add("effect."+MOD_ID+".honey_regeneration",
                 "Honey Regeneration");//TODO pick a better name
 
+        translationBuilder.add("effect."+MOD_ID+".honey_sticky",
+                "Sticky");
+
         translationBuilder.add("tag.item."+MOD_ID+".honey_harvesters",
                 "Honey Harvesters");
 
