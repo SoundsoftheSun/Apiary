@@ -24,6 +24,13 @@ public class HoneyRegeneration extends MobEffect {
     }
 
     @Override
+    public void onEffectAdded(LivingEntity entity, int amplifier) {
+        if (entity.getActiveEffectsMap().containsKey(ModEffects.HONEY_STICKY)) {
+            entity.removeEffect(ModEffects.HONEY_STICKY);
+        }
+    }
+
+    @Override
     public void onEffectRemoved(MobEffectInstance effectInstance, LivingEntity entity) {
         entity.addEffect(new MobEffectInstance(ModEffects.HONEY_STICKY, 100));
         super.onEffectRemoved(effectInstance, entity);
