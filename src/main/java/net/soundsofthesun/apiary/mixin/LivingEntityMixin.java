@@ -3,15 +3,15 @@ package net.soundsofthesun.apiary.mixin;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Attackable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.bee.Bee;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.waypoints.WaypointTransmitter;
+import net.soundsofthesun.apiary.blocks.ModBlocks;
 import net.soundsofthesun.apiary.client.datagen.ApiaryFluidTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -26,6 +26,12 @@ public abstract class LivingEntityMixin extends Entity implements Attackable, Wa
     @WrapOperation(method = "shouldTravelInFluid", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;isInLava()Z"))
     boolean sun$isInHoney(LivingEntity instance, Operation<Boolean> original) {
         return original.call(instance) || this.updateFluidHeightAndDoFluidPushing(ApiaryFluidTags.HONEY_TAG, 0.014D);
+    }
+
+    @WrapMethod(method = "causeFallDamage")
+    boolean sun$negateHoneyFallDamage(double fallDistance, float damageMultiplier, DamageSource damageSource, Operation<Boolean> original) {
+        if (this.getInBlockState().is(ModBlocks.HONEY_FLUID_BLOCK) && this.level().dimension() == Level.NETHER) return false;
+        return original.call(fallDistance, damageMultiplier, damageSource);
     }
 
 }
