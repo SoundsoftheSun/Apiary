@@ -19,6 +19,11 @@ public class ApiaryBlockTags extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.HONEY_EXTRACTOR)
                 .add(ModBlocks.DRIP_PAN)
                 .setReplace(false);
+
+        valueLookupBuilder(BlockTags.INCORRECT_FOR_STONE_TOOL)
+                .add(ModBlocks.HONEY_EXTRACTOR)
+                .add(ModBlocks.DRIP_PAN)
+                .setReplace(false);
     }
 
 }
