@@ -7,8 +7,8 @@
   - [x] Use with Honeycomb 4x to activate
   - [x] Based on centrifugal honey extractor; turns honeycomb into liquid honey
   - [x] Liquid honey falls into drip pan placed below spigot
-  - Texture
-    - Animated active texture
+  - [x] Texture
+    - [x] Animated active texture
   - Sound
 - Drip Pan
   - [x] Place in front of and below honey extractor to collect honey
@@ -47,3 +47,4 @@
 - "Dye" leather armor with honey, makes you sticky? idk
 - Armor trim with bee stripes
 - Brewing honey bucket to honey tonic? 
+- Honey rain event? lol

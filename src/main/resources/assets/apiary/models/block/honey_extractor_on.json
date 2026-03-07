@@ -4,7 +4,7 @@
     "0": "apiary:block/honey_extractor_bottom",
     "1": "apiary:block/honey_extractor_top_active",
     "2": "apiary:block/honey_extractor_side",
-    "3": "apiary:block/honey_extractor_subblocks",
+    "3": "apiary:block/honey_extractor_subblocks_active",
     "particle": "apiary:block/honey_extractor_side"
   }
 }

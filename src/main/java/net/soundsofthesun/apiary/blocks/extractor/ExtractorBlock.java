@@ -11,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -21,6 +22,10 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.soundsofthesun.apiary.blocks.ModBlockEntities;
 import net.soundsofthesun.apiary.blocks.ModProperties;
 import org.jspecify.annotations.NonNull;
@@ -97,4 +102,18 @@ public class ExtractorBlock extends BaseEntityBlock {
         return createTickerHelper(blockEntityType, ModBlockEntities.HONEY_EXTRACTOR_ENTITY, ExtractorBlockEntity::tick);
     }
 
+    public VoxelShape makeShape(){
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.join(shape, Shapes.box(0, 0, 0, 0.1875, 0.1875, 0.1875), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.8125, 0, 0, 1, 0.1875, 0.1875), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0, 0, 0.8125, 0.1875, 0.1875, 1), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.8125, 0, 0.8125, 1, 0.1875, 1), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0, 0.1875, 0, 1, 1, 1), BooleanOp.OR);
+        return shape;
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return makeShape();
+    }
 }
