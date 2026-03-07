@@ -3,8 +3,10 @@ package net.soundsofthesun.apiary.blocks.extractor;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -35,23 +37,38 @@ public class ExtractorBlock extends BaseEntityBlock {
 
     @Override
     protected @NonNull InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (level.isClientSide()) return InteractionResult.SUCCESS;
         if (
             level.getBlockEntity(pos) instanceof ExtractorBlockEntity be &&
+            player.canInteractWithLevel() &&
             player.getItemInHand(hand).is(Items.HONEYCOMB) &&
-            be.getItem(0).getCount() < 4
-        ){
-            if (be.getItem(0) == ItemStack.EMPTY) {
+            state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.OFF
+        ) {
+            if (be.getItem(0).getCount() == 3) {
+                if (!player.hasInfiniteMaterials()) player.getItemInHand(hand).shrink(1);
+                be.clearContent();
+                level.setBlockAndUpdate(pos, state.setValue(ModProperties.ACTIVE_PROPERTY, ModProperties.ACTIVE_STATE.ON));
+                be.ticks = 0;
+                be.setChanged();
+            } else if (be.getItem(0).isEmpty()) {
                 be.setItem(0, player.getItemInHand(hand).getItem().getDefaultInstance());
-                player.getItemInHand(hand).shrink(1);
+                if (!player.hasInfiniteMaterials()) player.getItemInHand(hand).shrink(1);
                 be.setChanged();
             } else if (be.getItem(0).is(Items.HONEYCOMB)) {
                 be.getItem(0).grow(1);
-                player.getItemInHand(hand).shrink(1);
+                if (!player.hasInfiniteMaterials()) player.getItemInHand(hand).shrink(1);
                 be.setChanged();
             }
-            return InteractionResult.SUCCESS;
         }
-        return InteractionResult.PASS;
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
+        if (state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON && level instanceof ServerLevel serverLevel) {
+            serverLevel.addFreshEntity(new ItemEntity(level, pos.getX()+0.5F, pos.getY()+0.5F, pos.getZ()+0.5F, new ItemStack(Items.HONEYCOMB, 4)));
+        }
+        super.playerDestroy(level, player, pos, state, blockEntity, tool);
     }
 
     @Override

@@ -121,7 +121,6 @@ public interface ImplementedContainer extends Container {
      * Must be called after changes in the container, so that the game can properly save
      * the container contents and notify neighboring blocks of container changes.
      */
-    @Override
     default void setChanged() {
         // Override if you want behavior.
     }

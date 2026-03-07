@@ -6,6 +6,7 @@
   "mixins": [
     "BeehiveBlockMixin",
     "BeeMixin",
+    "BucketItemMixin",
     "LivingEntityMixin"
   ],
   "client": [
