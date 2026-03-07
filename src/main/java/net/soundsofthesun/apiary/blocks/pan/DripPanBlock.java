@@ -1,6 +1,8 @@
 package net.soundsofthesun.apiary.blocks.pan;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
@@ -22,6 +24,8 @@ import net.soundsofthesun.apiary.blocks.ModProperties;
 import net.soundsofthesun.apiary.effects.ModEffects;
 import org.jspecify.annotations.Nullable;
 
+import java.util.Map;
+
 public class DripPanBlock extends Block {
     public DripPanBlock(Properties properties) {
         super(properties);
@@ -30,8 +34,18 @@ public class DripPanBlock extends Block {
 
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier applier, boolean intersects) {
-        if (state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON && entity.getY()-pos.getY() < 0.33 && entity instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(ModEffects.HONEY_REGENERATION, 100));
+        if (
+            state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON &&
+            entity.getY()-pos.getY() < 0.33 &&
+            entity instanceof LivingEntity livingEntity
+        ) {
+            Map<Holder<MobEffect>, MobEffectInstance> effects = livingEntity.getActiveEffectsMap();
+            boolean hasEffect = effects.containsKey(ModEffects.HONEY_REGENERATION);
+            if (
+                !hasEffect || (hasEffect && effects.get(ModEffects.HONEY_REGENERATION).getDuration() <= ModEffects.regenDuration-20)
+            ) {
+                livingEntity.addEffect(new MobEffectInstance(ModEffects.HONEY_REGENERATION, 100));
+            }
         }
     }
 

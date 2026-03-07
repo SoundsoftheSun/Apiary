@@ -54,7 +54,7 @@ public abstract class LivingEntityMixin extends Entity implements Attackable, Wa
     @WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/damagesource/CombatTracker;recheckStatus()V"))//I'm not sure if this is the best place to handle this
     void sun$checkInHoneyEffects(CombatTracker instance, Operation<Void> original) {
         if (this.getInBlockState().is(ModBlocks.HONEY_FLUID_BLOCK) && !this.getActiveEffectsMap().containsKey(ModEffects.HONEY_REGENERATION)) {
-            this.addEffect(new MobEffectInstance(ModEffects.HONEY_REGENERATION, 100));
+            this.addEffect(new MobEffectInstance(ModEffects.HONEY_REGENERATION, ModEffects.regenDuration));
         }
     }
 

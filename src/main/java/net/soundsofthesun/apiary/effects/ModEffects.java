@@ -10,9 +10,11 @@ import net.soundsofthesun.apiary.Apiary;
 
 public class ModEffects {
 
+    public static final int regenDuration = 100;
     public static final Holder<MobEffect> HONEY_REGENERATION =
             Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Apiary.id("honey_regeneration"), new HoneyRegeneration());
 
+    public static final int stickyDuration = 100;
     public static final Holder<MobEffect> HONEY_STICKY =
             Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Apiary.id("honey_sticky"), new HoneySticky()
                     .addAttributeModifier(
