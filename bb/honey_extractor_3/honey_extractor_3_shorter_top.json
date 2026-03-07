@@ -1,8 +1,14 @@
 {
-	"parent": "minecraft:block/cube",
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
+	"textures": {
+		"0": "honey_extractor_bottom",
+		"1": "honey_extractor_top",
+		"2": "honey_extractor_side",
+		"3": "subblocks",
+		"particle": "honey_extractor_bottom"
+	},
 	"elements": [
 		{
 			"from": [0, 3, 0],
