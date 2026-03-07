@@ -24,25 +24,24 @@ import java.util.function.Function;
 
 public class ModBlocks {
 
-    //TODO workstation behavior
     public static final Block HONEY_EXTRACTOR = register(
             "honey_extractor",
             ExtractorBlock::new,
             BlockBehaviour.Properties.of()
                     .noOcclusion()
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.IRON)
                     .instrument(NoteBlockInstrument.BASS)
-                    .strength(2.0F)
-                    .ignitedByLava(),
+                    .strength(3.5F),
             true
     );
 
-    //TODO drip pan behavior
     public static final Block DRIP_PAN = register(
             "drip_pan",
             DripPanBlock::new,
             BlockBehaviour.Properties.of()
                     .noOcclusion()
+                    .requiresCorrectToolForDrops()
                     .sound(SoundType.IRON)
                     .instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F),
@@ -59,7 +58,7 @@ public class ModBlocks {
                     .mapColor(MapColor.COLOR_ORANGE)
                     .replaceable()
                     .noCollision()
-                    .strength(100.0F)
+                    .strength(10.0F)
                     .pushReaction(PushReaction.DESTROY)
                     .noLootTable()
                     .liquid()
