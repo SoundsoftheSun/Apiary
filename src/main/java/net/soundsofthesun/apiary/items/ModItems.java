@@ -4,11 +4,14 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.Util;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.equipment.trim.TrimPattern;
 import net.soundsofthesun.apiary.Apiary;
 import net.soundsofthesun.apiary.blocks.ModBlocks;
 
@@ -22,6 +25,9 @@ public class ModItems {
 
     public static final Item MESH = register("mesh", Item::new, new Item.Properties());
 
+    public static final ResourceKey<TrimPattern> SMITHING_BEEKEEPER_PATTERN = ResourceKey.create(Registries.TRIM_PATTERN, Apiary.id("beekeeper_pattern"));
+    public static final Item BEEKEEPER_SMITHING_TEMPLATE = register("beekeeper_smithing_template", SmithingTemplateItem::createArmorTrimTemplate, new Item.Properties());
+
     public static final Item HONEY_BUCKET = register("honey_bucket", properties -> new BucketItem(ModBlocks.HONEY_SOURCE, properties), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1));
 
     public static final CreativeModeTab.DisplayItemsGenerator TAB_ITEMS = (params, output) -> {
@@ -31,9 +37,12 @@ public class ModItems {
         output.accept(ModItems.HIVE_TOOL);
         output.accept(ModItems.VEIL);
         output.accept(ModItems.MESH);
+        output.accept(ModItems.BEEKEEPER_SMITHING_TEMPLATE);
     };
 
-
+    public static void bootstrapTrims(BootstrapContext<TrimPattern> context) {
+        registerTrim(context, ModItems.BEEKEEPER_SMITHING_TEMPLATE, SMITHING_BEEKEEPER_PATTERN);
+    }
 
     public static void init() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, BEEKEEPER_TAB_KEY, BEEKEEPER_TAB);
@@ -51,6 +60,13 @@ public class ModItems {
         T item = itemFactory.apply(settings.setId(itemKey));
         Registry.register(BuiltInRegistries.ITEM, itemKey, item);
         return item;
+    }
+
+    private static void registerTrim(BootstrapContext<TrimPattern> context, Item item, ResourceKey<TrimPattern> key) {
+        TrimPattern trimPattern = new TrimPattern(key.identifier(),
+                Component.translatable(Util.makeDescriptionId("trim_pattern", key.identifier())), false);
+
+        context.register(key, trimPattern);
     }
 
 }

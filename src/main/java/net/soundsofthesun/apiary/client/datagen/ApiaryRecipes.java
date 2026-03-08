@@ -3,8 +3,10 @@ package net.soundsofthesun.apiary.client.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.soundsofthesun.apiary.Apiary;
@@ -70,6 +72,8 @@ public class ApiaryRecipes extends FabricRecipeProvider {
                         .define('M', ModItems.MESH)
                         .unlockedBy(getHasName(ModItems.MESH), has(ModItems.MESH))
                         .save(output);
+
+                trimSmithing(ModItems.BEEKEEPER_SMITHING_TEMPLATE, ModItems.SMITHING_BEEKEEPER_PATTERN, ResourceKey.create(Registries.RECIPE, Apiary.id("beekeeper_pattern")));
             }
         };
     }

@@ -22,5 +22,6 @@ public class ApiaryModels extends FabricModelProvider {
         items.generateFlatItem(ModItems.HIVE_TOOL, ModelTemplates.FLAT_HANDHELD_ITEM);
         items.generateFlatItem(ModItems.HONEY_BUCKET, ModelTemplates.FLAT_ITEM);
         items.generateFlatItem(ModItems.MESH, ModelTemplates.FLAT_ITEM);
+        items.generateFlatItem(ModItems.BEEKEEPER_SMITHING_TEMPLATE, ModelTemplates.FLAT_ITEM);
     }
 }

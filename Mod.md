@@ -36,6 +36,8 @@
   - [x] Prevents bee anger on harvest; alternative to campfire
   - [x] Reduce damage from angry bees
 - Advancements
+- Armor Trim
+  - [x] Striped beekeeper armor trim
 
 # New Gameplay mechanics (tentative)
 - [x] Smoked-out beehives will NOT produce honey
@@ -57,6 +59,5 @@
 # Christmas List
 
 - "Dye" leather armor with honey, makes you sticky? idk
-- Armor trim with bee stripes
 - Brewing honey bucket to honey tonic? 
 - Honey rain event? lol

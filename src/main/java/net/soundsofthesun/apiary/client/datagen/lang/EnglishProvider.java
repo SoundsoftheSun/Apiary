@@ -39,6 +39,12 @@ public class EnglishProvider extends FabricLanguageProvider {
         translationBuilder.add("item."+MOD_ID+".honey_bucket",
                 "Bucket of Honey");
 
+        translationBuilder.add("item."+MOD_ID+".beekeeper_smithing_template",
+                "Beekeeper Armor Trim");
+
+        translationBuilder.add("trim_pattern."+MOD_ID+".beekeeper_pattern",
+                "Beekeeper Armor Trim");
+
         translationBuilder.add(MOD_ID+".villager.beekeeper",
                 "Beekeeper");
 
