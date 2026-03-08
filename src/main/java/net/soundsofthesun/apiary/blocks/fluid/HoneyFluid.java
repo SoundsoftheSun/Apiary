@@ -33,9 +33,7 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
     public static void entityInHoney(LivingEntity livingEntity) {
         Map<Holder<MobEffect>, MobEffectInstance> effects = livingEntity.getActiveEffectsMap();
         boolean hasEffect = effects.containsKey(ModEffects.HONEY_REGENERATION);
-        if (
-            !hasEffect || effects.get(ModEffects.HONEY_REGENERATION).getDuration() <= ModEffects.regenDuration-20
-        ) {
+        if (!hasEffect || effects.get(ModEffects.HONEY_REGENERATION).getDuration() <= ModEffects.regenDuration-20) {
             livingEntity.addEffect(new MobEffectInstance(ModEffects.HONEY_REGENERATION, 100));
         }
     }
@@ -79,9 +77,13 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
 
         @Override
         protected void entityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
-            // "Melt" flowing honey if on fire
-            if (entity.isOnFire()) level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-            if (entity instanceof LivingEntity livingEntity) entityInHoney(livingEntity);
+            if (!(entity instanceof LivingEntity livingEntity)) return;
+            // "Melt" flowing honey if on fire, or apply healing effect
+            if (livingEntity.isOnFire()) {
+                level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+            } else {
+                entityInHoney(livingEntity);
+            }
         }
 
         @Override
@@ -105,12 +107,14 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
 
         @Override
         protected void entityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
-            // "Melt" source honey if on fire and extinguish
-            if (entity.isOnFire()) {
+            if (!(entity instanceof LivingEntity livingEntity)) return;
+            // "Melt" source honey if on fire and extinguish, or apply healing effect
+            if (livingEntity.isOnFire()) {
                 level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
                 effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
+            } else {
+                entityInHoney(livingEntity);
             }
-            if (entity instanceof LivingEntity livingEntity) entityInHoney(livingEntity);
         }
 
         @Override
