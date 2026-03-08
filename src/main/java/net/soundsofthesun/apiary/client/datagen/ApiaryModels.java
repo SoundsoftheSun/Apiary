@@ -6,6 +6,7 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.soundsofthesun.apiary.items.ModItems;
+import org.jspecify.annotations.NonNull;
 
 public class ApiaryModels extends FabricModelProvider {
     public ApiaryModels(FabricDataOutput output) {
@@ -13,8 +14,7 @@ public class ApiaryModels extends FabricModelProvider {
     }
 
     @Override
-    public void generateBlockStateModels(BlockModelGenerators blocks) {
-        //blocks.createTrivialBlock(ModBlocks.HONEY_EXTRACTOR, TexturedModel.CUBE_TOP_BOTTOM);
+    public void generateBlockStateModels(@NonNull BlockModelGenerators blocks) {
     }
 
     @Override

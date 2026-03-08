@@ -22,6 +22,7 @@ import net.soundsofthesun.apiary.blocks.ImplementedContainer;
 import net.soundsofthesun.apiary.blocks.ModBlockEntities;
 import net.soundsofthesun.apiary.blocks.ModBlocks;
 import net.soundsofthesun.apiary.blocks.ModProperties;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 public class ExtractorBlockEntity extends BlockEntity implements ImplementedContainer, WorldlyContainer {
@@ -96,14 +97,14 @@ public class ExtractorBlockEntity extends BlockEntity implements ImplementedCont
     }
 
     @Override
-    protected void saveAdditional(ValueOutput output) {
+    protected void saveAdditional(@NonNull ValueOutput output) {
         ContainerHelper.saveAllItems(output, getItems());
         output.putInt("ticks", ticks);
         super.saveAdditional(output);
     }
 
     @Override
-    protected void loadAdditional(ValueInput input) {
+    protected void loadAdditional(@NonNull ValueInput input) {
         super.loadAdditional(input);
         items.clear();
         ContainerHelper.loadAllItems(input, items);
@@ -111,22 +112,22 @@ public class ExtractorBlockEntity extends BlockEntity implements ImplementedCont
     }
 
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+    public @NonNull CompoundTag getUpdateTag(HolderLookup.@NonNull Provider registries) {
         return saveWithoutMetadata(registries);
     }
 
     @Override
-    public int[] getSlotsForFace(Direction side) {
+    public int @NonNull [] getSlotsForFace(@NonNull Direction side) {
         return new int[0];
     }
 
     @Override
-    public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
+    public boolean canPlaceItemThroughFace(int index, @NonNull ItemStack itemStack, @Nullable Direction direction) {
         return false;
     }
 
     @Override
-    public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
+    public boolean canTakeItemThroughFace(int index, @NonNull ItemStack stack, @NonNull Direction direction) {
         return false;
     }
 }

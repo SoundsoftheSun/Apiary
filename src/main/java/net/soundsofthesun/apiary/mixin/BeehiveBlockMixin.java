@@ -30,14 +30,14 @@ public class BeehiveBlockMixin {
     }
 
     @WrapOperation(method = "useItemOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/Entity;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
-    void sun$playHarvestSound(Level instance, Entity entity, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch, Operation<Void> original, @Local ItemStack stack) {
+    void sun$playHarvestSound(Level instance, Entity entity, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch, Operation<Void> original, @Local(argsOnly = true) ItemStack stack) {
         // Play different sound when using hive tool
         boolean usedHiveTool = stack.is(ModItems.HIVE_TOOL);
         original.call(instance, entity, x, y, z, usedHiveTool ? SoundEvents.HONEY_BLOCK_HIT : sound, source, usedHiveTool ? 1.2F : volume, pitch);
     }
 
     @WrapOperation(method = "useItemOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/CampfireBlock;isSmokeyPos(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Z"))
-    boolean sun$angerBees(Level level, BlockPos pos, Operation<Boolean> original, @Local Player player) {
+    boolean sun$angerBees(Level level, BlockPos pos, Operation<Boolean> original, @Local(argsOnly = true) Player player) {
         // Anger bees if not smokey or wearing beekeeper veil
         return original.call(level, pos) || player.getItemBySlot(EquipmentSlot.HEAD).is(ApiaryItemTags.BEE_PROTECTION);
     }

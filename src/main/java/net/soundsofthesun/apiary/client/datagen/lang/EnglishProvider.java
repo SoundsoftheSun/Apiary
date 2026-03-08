@@ -3,6 +3,7 @@ package net.soundsofthesun.apiary.client.datagen.lang;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
+import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -15,7 +16,7 @@ public class EnglishProvider extends FabricLanguageProvider {
     }
 
     @Override
-    public void generateTranslations(HolderLookup.Provider provider, TranslationBuilder translationBuilder) {
+    public void generateTranslations(HolderLookup.@NonNull Provider provider, TranslationBuilder translationBuilder) {
 
         translationBuilder.add(MOD_ID+".itemGroup",
                 MOD_NAME);

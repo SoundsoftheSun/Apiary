@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import org.jspecify.annotations.NonNull;
 
 public abstract class AbstractHoneyFluid extends FlowingFluid {
 
@@ -20,33 +21,33 @@ public abstract class AbstractHoneyFluid extends FlowingFluid {
     }
 
     @Override
-    public boolean isSame(Fluid fluid) {
+    public boolean isSame(@NonNull Fluid fluid) {
         return fluid == getSource() || fluid == getFlowing();
     }
 
     @Override
-    protected void beforeDestroyingBlock(LevelAccessor level, BlockPos pos, BlockState state) {
+    protected void beforeDestroyingBlock(@NonNull LevelAccessor level, @NonNull BlockPos pos, BlockState state) {
         final BlockEntity entity = state.hasBlockEntity() ? level.getBlockEntity(pos) : null;
         Block.dropResources(state, level, pos, entity);
     }
 
     @Override
-    protected boolean canBeReplacedWith(FluidState state, BlockGetter level, BlockPos pos, Fluid fluid, Direction direction) {
+    protected boolean canBeReplacedWith(@NonNull FluidState state, @NonNull BlockGetter level, @NonNull BlockPos pos, @NonNull Fluid fluid, @NonNull Direction direction) {
         return false;
     }
 
     @Override
-    protected int getSlopeFindDistance(LevelReader reader) {
+    protected int getSlopeFindDistance(@NonNull LevelReader reader) {
         return isFastLava(reader) ? 2 : 1;
     }
 
     @Override
-    protected int getDropOff(LevelReader reader) {
+    protected int getDropOff(@NonNull LevelReader reader) {
         return isFastLava(reader) ? 1 : 2;
     }
 
     @Override
-    public int getTickDelay(LevelReader reader) {
+    public int getTickDelay(@NonNull LevelReader reader) {
         return isFastLava(reader) ? 20 : 40;
     }
 

@@ -19,14 +19,14 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(VillagerProfessionLayer.class)
 public abstract class VillagerProfessionLayerMixin {
-    @Unique VillagerModel beekeeper = new VillagerModel(BeekeeperVillagerModel.createBodyModel().getRoot().bake(128, 128));
+    private final @Unique VillagerModel beekeeperModel = new VillagerModel(BeekeeperVillagerModel.createBodyModel().getRoot().bake(128, 128));
     @WrapOperation(
             method = "submit(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;ILnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;FF)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/layers/VillagerProfessionLayer;renderColoredCutoutModel(Lnet/minecraft/client/model/Model;Lnet/minecraft/resources/Identifier;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;ILnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;II)V",
             ordinal = 0))
-    void sun$renderBeekeeperHood(Model model, Identifier identifier, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i, LivingEntityRenderState livingEntityRenderState, int ii, int iii, Operation<Void> original) {
+    void sun$renderBeekeeperHood(@SuppressWarnings("rawtypes") Model model, Identifier identifier, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i, LivingEntityRenderState livingEntityRenderState, int ii, int iii, Operation<Void> original) {
         if (livingEntityRenderState instanceof VillagerRenderState state && state.villagerData != null && state.villagerData.profession().is(ModVillagers.BEEKEEPER)) {
-            original.call(beekeeper, Apiary.id("textures/entity/villager/beekeeper_veil.png"), poseStack, submitNodeCollector, i, state, ii, iii);
+            original.call(beekeeperModel, Apiary.id("textures/entity/villager/beekeeper_veil.png"), poseStack, submitNodeCollector, i, state, ii, iii);
         } else {
             original.call(model, identifier, poseStack, submitNodeCollector, i, livingEntityRenderState, ii, iii);
         }

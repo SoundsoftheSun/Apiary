@@ -6,6 +6,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import org.jspecify.annotations.NonNull;
 
 public class HoneyRegeneration extends MobEffect {
     public HoneyRegeneration() {
@@ -18,7 +19,7 @@ public class HoneyRegeneration extends MobEffect {
     }
 
     @Override
-    public boolean applyEffectTick(ServerLevel level, LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(@NonNull ServerLevel level, @NonNull LivingEntity entity, int amplifier) {
         if (entity instanceof Player player) player.heal(0.5F);
         return super.applyEffectTick(level, entity, amplifier);
     }
@@ -31,7 +32,7 @@ public class HoneyRegeneration extends MobEffect {
     }
 
     @Override
-    public void onEffectRemoved(MobEffectInstance effectInstance, LivingEntity entity) {
+    public void onEffectRemoved(@NonNull MobEffectInstance effectInstance, LivingEntity entity) {
         entity.addEffect(new MobEffectInstance(ModEffects.HONEY_STICKY, ModEffects.stickyDuration));
         super.onEffectRemoved(effectInstance, entity);
     }

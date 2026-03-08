@@ -21,6 +21,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.soundsofthesun.apiary.blocks.ModBlocks;
 import net.soundsofthesun.apiary.blocks.ModProperties;
 import net.soundsofthesun.apiary.blocks.fluid.HoneyFluid;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 public class DripPanBlock extends Block {
@@ -30,7 +31,7 @@ public class DripPanBlock extends Block {
     }
 
     @Override
-    protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier applier, boolean intersects) {
+    protected void entityInside(BlockState state, @NonNull Level level, @NonNull BlockPos pos, @NonNull Entity entity, @NonNull InsideBlockEffectApplier applier, boolean intersects) {
         if (
             state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON &&
             entity.getY()-pos.getY() < 0.33 &&
@@ -41,7 +42,7 @@ public class DripPanBlock extends Block {
     }
 
     @Override
-    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
+    public void playerDestroy(@NonNull Level level, @NonNull Player player, @NonNull BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, @NonNull ItemStack tool) {
         if (state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON) {
             level.setBlockAndUpdate(pos, ModBlocks.HONEY_FLUID_BLOCK.defaultBlockState());
             level.playSound(null, pos, SoundEvents.HONEY_BLOCK_BREAK, SoundSource.BLOCKS, 0.5F, 1F);
@@ -73,7 +74,7 @@ public class DripPanBlock extends Block {
     }
 
     @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    protected @NonNull VoxelShape getShape(@NonNull BlockState state, @NonNull BlockGetter level, @NonNull BlockPos pos, @NonNull CollisionContext context) {
         return makeShape();
     }
 }

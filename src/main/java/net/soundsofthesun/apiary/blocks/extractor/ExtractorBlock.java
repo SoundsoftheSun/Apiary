@@ -43,7 +43,7 @@ public class ExtractorBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected @NonNull InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    protected @NonNull InteractionResult useItemOn(@NonNull ItemStack stack, @NonNull BlockState state, Level level, @NonNull BlockPos pos, @NonNull Player player, @NonNull InteractionHand hand, @NonNull BlockHitResult hitResult) {
         if (level.isClientSide()) return InteractionResult.SUCCESS;
         if (
             level.getBlockEntity(pos) instanceof ExtractorBlockEntity be &&
@@ -73,7 +73,7 @@ public class ExtractorBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
+    public void playerDestroy(@NonNull Level level, @NonNull Player player, @NonNull BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, @NonNull ItemStack tool) {
         if (state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON && level instanceof ServerLevel serverLevel) {
             serverLevel.addFreshEntity(new ItemEntity(level, pos.getX()+0.5F, pos.getY()+0.5F, pos.getZ()+0.5F, new ItemStack(Items.HONEYCOMB, 4)));
         }
@@ -92,17 +92,17 @@ public class ExtractorBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
+    protected @NonNull MapCodec<? extends BaseEntityBlock> codec() {
         return simpleCodec(ExtractorBlock::new);
     }
 
     @Override
-    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    public @Nullable BlockEntity newBlockEntity(@NonNull BlockPos pos, @NonNull BlockState state) {
         return new ExtractorBlockEntity(pos, state);
     }
 
     @Override
-    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(@NonNull Level level, @NonNull BlockState state, @NonNull BlockEntityType<T> blockEntityType) {
         return createTickerHelper(blockEntityType, ModBlockEntities.HONEY_EXTRACTOR_ENTITY, ExtractorBlockEntity::tick);
     }
 
@@ -117,7 +117,7 @@ public class ExtractorBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    protected @NonNull VoxelShape getShape(@NonNull BlockState state, @NonNull BlockGetter level, @NonNull BlockPos pos, @NonNull CollisionContext context) {
         return makeShape();
     }
 }

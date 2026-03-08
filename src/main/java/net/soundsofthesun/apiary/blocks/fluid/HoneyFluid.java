@@ -24,6 +24,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.soundsofthesun.apiary.blocks.ModBlocks;
 import net.soundsofthesun.apiary.effects.ModEffects;
 import net.soundsofthesun.apiary.items.ModItems;
+import org.jspecify.annotations.NonNull;
 
 import java.util.Map;
 import java.util.Optional;
@@ -44,39 +45,39 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
     }
 
     @Override
-    public Fluid getSource() {
+    public @NonNull Fluid getSource() {
         return ModBlocks.HONEY_SOURCE;
     }
 
     @Override
-    public Fluid getFlowing() {
+    public @NonNull Fluid getFlowing() {
         return ModBlocks.HONEY_FLOWING;
     }
 
     @Override
-    public Item getBucket() {
+    public @NonNull Item getBucket() {
         return ModItems.HONEY_BUCKET;
     }
 
     @Override
-    public Optional<SoundEvent> getPickupSound() {
+    public @NonNull Optional<SoundEvent> getPickupSound() {
         return Optional.of(SoundEvents.HONEY_BLOCK_BREAK);
     }
 
     @Override
-    protected BlockState createLegacyBlock(FluidState state) {
+    protected @NonNull BlockState createLegacyBlock(@NonNull FluidState state) {
         return ModBlocks.HONEY_FLUID_BLOCK.defaultBlockState().setValue(BlockStateProperties.LEVEL, getLegacyLevel(state));
     }
 
     @Override
-    protected boolean canConvertToSource(ServerLevel level) {
+    protected boolean canConvertToSource(@NonNull ServerLevel level) {
         return false;
     }
 
     public static class Flowing extends HoneyFluid {
 
         @Override
-        protected void entityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
+        protected void entityInside(@NonNull Level level, @NonNull BlockPos pos, @NonNull Entity entity, @NonNull InsideBlockEffectApplier effectApplier) {
             if (!(entity instanceof LivingEntity livingEntity)) return;
             // "Melt" flowing honey if on fire, or apply healing effect
             if (livingEntity.isOnFire()) {
@@ -87,13 +88,13 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
         }
 
         @Override
-        protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
+        protected void createFluidStateDefinition(StateDefinition.@NonNull Builder<Fluid, FluidState> builder) {
             super.createFluidStateDefinition(builder);
             builder.add(LEVEL);
         }
 
         @Override
-        public boolean isSource(FluidState state) {
+        public boolean isSource(@NonNull FluidState state) {
             return false;
         }
 
@@ -106,7 +107,7 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
     public static class Still extends HoneyFluid {
 
         @Override
-        protected void entityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
+        protected void entityInside(@NonNull Level level, @NonNull BlockPos pos, @NonNull Entity entity, @NonNull InsideBlockEffectApplier effectApplier) {
             if (!(entity instanceof LivingEntity livingEntity)) return;
             // "Melt" source honey if on fire and extinguish, or apply healing effect
             if (livingEntity.isOnFire()) {
@@ -118,12 +119,12 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
         }
 
         @Override
-        public boolean isSource(FluidState state) {
+        public boolean isSource(@NonNull FluidState state) {
             return true;
         }
 
         @Override
-        public int getAmount(FluidState state) {
+        public int getAmount(@NonNull FluidState state) {
             return 5;
         }
     }

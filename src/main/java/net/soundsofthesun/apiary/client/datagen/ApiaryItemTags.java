@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.soundsofthesun.apiary.Apiary;
 import net.soundsofthesun.apiary.items.ModItems;
+import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -26,7 +27,7 @@ public class ApiaryItemTags extends FabricTagProvider.ItemTagProvider {
     public static final TagKey<Item> BEE_STUFF = TagKey.create(Registries.ITEM, Apiary.id("bee_stuff"));
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.@NonNull Provider provider) {
 
         valueLookupBuilder(REPAIRS_BEE_PROTECTION)
                 .add(ModItems.MESH);

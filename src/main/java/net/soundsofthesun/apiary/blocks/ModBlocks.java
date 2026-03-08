@@ -48,8 +48,8 @@ public class ModBlocks {
             true
     );
 
-    public static FlowingFluid HONEY_SOURCE = Registry.register(BuiltInRegistries.FLUID, Apiary.id("honey_source"), new HoneyFluid.Still());
-    public static FlowingFluid HONEY_FLOWING = Registry.register(BuiltInRegistries.FLUID, Apiary.id("honey_flowing"), new HoneyFluid.Flowing());
+    public static final FlowingFluid HONEY_SOURCE = Registry.register(BuiltInRegistries.FLUID, Apiary.id("honey_source"), new HoneyFluid.Still());
+    public static final FlowingFluid HONEY_FLOWING = Registry.register(BuiltInRegistries.FLUID, Apiary.id("honey_flowing"), new HoneyFluid.Flowing());
 
     public static final Block HONEY_FLUID_BLOCK = register(
             "honey_fluid_block",

@@ -3,11 +3,9 @@ package net.soundsofthesun.apiary.client.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.soundsofthesun.apiary.Apiary;
 import net.soundsofthesun.apiary.blocks.ModBlocks;
@@ -22,11 +20,11 @@ public class ApiaryRecipes extends FabricRecipeProvider {
     }
 
     @Override
-    protected net.minecraft.data.recipes.@NonNull RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
+    protected net.minecraft.data.recipes.@NonNull RecipeProvider createRecipeProvider(HolderLookup.@NonNull Provider provider, @NonNull RecipeOutput recipeOutput) {
         return new net.minecraft.data.recipes.RecipeProvider(provider, recipeOutput) {
             @Override
             public void buildRecipes() {
-                HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
+                //HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
                 shapeless(RecipeCategory.TOOLS, ModItems.HIVE_TOOL)
                         .requires(Items.STICK)

@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 import net.soundsofthesun.apiary.blocks.ModBlocks;
+import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -14,7 +15,7 @@ public class ApiaryBlockTags extends FabricTagProvider.BlockTagProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.@NonNull Provider provider) {
         valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.HONEY_EXTRACTOR)
                 .add(ModBlocks.DRIP_PAN)

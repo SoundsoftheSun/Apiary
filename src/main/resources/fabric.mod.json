@@ -7,7 +7,7 @@
   "authors": [],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/bees/icon.png",
+  "icon": "assets/apiary/icon.png",
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [

@@ -5,6 +5,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import org.jspecify.annotations.NonNull;
 
 /**
  * A simple {@link Container} implementation with only default methods + an item list getter.
@@ -62,7 +63,7 @@ public interface ImplementedContainer extends Container {
      * Retrieves the item in the slot.
      */
     @Override
-    default ItemStack getItem(int slot) {
+    default @NonNull ItemStack getItem(int slot) {
         return getItems().get(slot);
     }
 
@@ -73,7 +74,7 @@ public interface ImplementedContainer extends Container {
      *              takes all items in that slot.
      */
     @Override
-    default ItemStack removeItem(int slot, int count) {
+    default @NonNull ItemStack removeItem(int slot, int count) {
         ItemStack result = ContainerHelper.removeItem(getItems(), slot, count);
 
         if (!result.isEmpty()) {
@@ -88,7 +89,7 @@ public interface ImplementedContainer extends Container {
      * @param slot The slot to remove from.
      */
     @Override
-    default ItemStack removeItemNoUpdate(int slot) {
+    default @NonNull ItemStack removeItemNoUpdate(int slot) {
         return ContainerHelper.takeItem(getItems(), slot);
     }
 
@@ -100,7 +101,7 @@ public interface ImplementedContainer extends Container {
      *              it gets resized to this container's maximum amount.
      */
     @Override
-    default void setItem(int slot, ItemStack stack) {
+    default void setItem(int slot, @NonNull ItemStack stack) {
         getItems().set(slot, stack);
 
         if (stack.getCount() > stack.getMaxStackSize()) {
@@ -129,7 +130,7 @@ public interface ImplementedContainer extends Container {
      * @return true if the player can use the container, false otherwise.
      */
     @Override
-    default boolean stillValid(Player player) {
+    default boolean stillValid(@NonNull Player player) {
         return true;
     }
 }

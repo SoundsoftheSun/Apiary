@@ -8,10 +8,9 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.model.npc.VillagerModel;
 
 public class BeekeeperVillagerModel extends VillagerModel {
-    private final ModelPart hood;
 
     public BeekeeperVillagerModel(ModelPart modelPart) {
-        super(modelPart);this.hood = modelPart.getChild("hood");
+        super(modelPart);
     }
 
     public static MeshDefinition createBodyModel() {

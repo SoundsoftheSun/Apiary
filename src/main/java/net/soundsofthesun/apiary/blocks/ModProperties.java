@@ -7,13 +7,11 @@ import org.jspecify.annotations.NonNull;
 public class ModProperties {
 
     public enum ACTIVE_STATE implements StringRepresentable {
-        OFF(0, "off"), ON(1, "on");
+        OFF("off"), ON("on");
 
-        private final int index;
         private final String id;
 
-        ACTIVE_STATE(int index, String id) {
-            this.index = index;
+        ACTIVE_STATE(String id) {
             this.id = id;
         }
 
@@ -21,8 +19,6 @@ public class ModProperties {
         public @NonNull String getSerializedName() {
             return this.id;
         }
-
-        public static final StringRepresentable.EnumCodec<ACTIVE_STATE> CODEC = StringRepresentable.fromEnum(ACTIVE_STATE::values);
 
     }
 
