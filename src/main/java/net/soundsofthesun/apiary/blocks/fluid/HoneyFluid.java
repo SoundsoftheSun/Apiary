@@ -1,14 +1,18 @@
 package net.soundsofthesun.apiary.blocks.fluid;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.InsideBlockEffectType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -18,11 +22,23 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.soundsofthesun.apiary.blocks.ModBlocks;
+import net.soundsofthesun.apiary.effects.ModEffects;
 import net.soundsofthesun.apiary.items.ModItems;
 
+import java.util.Map;
 import java.util.Optional;
 
 public abstract class HoneyFluid extends AbstractHoneyFluid {
+
+    public static void entityInHoney(LivingEntity livingEntity) {
+        Map<Holder<MobEffect>, MobEffectInstance> effects = livingEntity.getActiveEffectsMap();
+        boolean hasEffect = effects.containsKey(ModEffects.HONEY_REGENERATION);
+        if (
+            !hasEffect || effects.get(ModEffects.HONEY_REGENERATION).getDuration() <= ModEffects.regenDuration-20
+        ) {
+            livingEntity.addEffect(new MobEffectInstance(ModEffects.HONEY_REGENERATION, 100));
+        }
+    }
 
     @Override
     public ParticleOptions getDripParticle() {
@@ -65,6 +81,7 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
         protected void entityInside(Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier) {
             // "Melt" flowing honey if on fire
             if (entity.isOnFire()) level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+            if (entity instanceof LivingEntity livingEntity) entityInHoney(livingEntity);
         }
 
         @Override
@@ -93,6 +110,7 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
                 level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
                 effectApplier.apply(InsideBlockEffectType.EXTINGUISH);
             }
+            if (entity instanceof LivingEntity livingEntity) entityInHoney(livingEntity);
         }
 
         @Override
