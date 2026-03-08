@@ -37,6 +37,17 @@
   - [x] Reduce damage from angry bees
 - Advancements
 
+# New Gameplay mechanics (tentative)
+- [x] Smoked-out beehives will NOT produce honey
+- Revitalization mechanic
+  - Ghost Bees
+  - Abandoned Beehives
+  - Abandoned beekeeper grounds
+  - Players find abandoned structure
+    - repair abandoned beehives
+    - ghost bees turn to normal bees again
+    - increased rates and better trades from villager
+
 # Crafting Items
 
 - Mesh screen

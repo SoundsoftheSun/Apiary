@@ -4,6 +4,7 @@
   "package": "net.soundsofthesun.apiary.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "BeehiveBlockEntityMixin",
     "BeehiveBlockMixin",
     "BeeMixin",
     "BucketItemMixin",
