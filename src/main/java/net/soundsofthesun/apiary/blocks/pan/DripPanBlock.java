@@ -2,6 +2,8 @@ package net.soundsofthesun.apiary.blocks.pan;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -42,7 +44,7 @@ public class DripPanBlock extends Block {
             Map<Holder<MobEffect>, MobEffectInstance> effects = livingEntity.getActiveEffectsMap();
             boolean hasEffect = effects.containsKey(ModEffects.HONEY_REGENERATION);
             if (
-                !hasEffect || (hasEffect && effects.get(ModEffects.HONEY_REGENERATION).getDuration() <= ModEffects.regenDuration-20)
+                !hasEffect || effects.get(ModEffects.HONEY_REGENERATION).getDuration() <= ModEffects.regenDuration-20
             ) {
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.HONEY_REGENERATION, 100));
             }
@@ -53,6 +55,7 @@ public class DripPanBlock extends Block {
     public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
         if (state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON) {
             level.setBlockAndUpdate(pos, ModBlocks.HONEY_FLUID_BLOCK.defaultBlockState());
+            level.playSound(null, pos, SoundEvents.HONEY_BLOCK_BREAK, SoundSource.BLOCKS, 0.5F, 1F);
         }
         super.playerDestroy(level, player, pos, state, blockEntity, tool);
     }

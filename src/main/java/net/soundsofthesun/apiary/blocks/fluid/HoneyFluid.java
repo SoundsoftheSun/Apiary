@@ -4,6 +4,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.InsideBlockEffectType;
@@ -17,6 +19,8 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.soundsofthesun.apiary.blocks.ModBlocks;
 import net.soundsofthesun.apiary.items.ModItems;
+
+import java.util.Optional;
 
 public abstract class HoneyFluid extends AbstractHoneyFluid {
 
@@ -38,6 +42,11 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
     @Override
     public Item getBucket() {
         return ModItems.HONEY_BUCKET;
+    }
+
+    @Override
+    public Optional<SoundEvent> getPickupSound() {
+        return Optional.of(SoundEvents.HONEY_BLOCK_BREAK);
     }
 
     @Override

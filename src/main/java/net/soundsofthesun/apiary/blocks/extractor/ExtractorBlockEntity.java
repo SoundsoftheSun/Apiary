@@ -7,6 +7,8 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.item.ItemStack;
@@ -54,6 +56,7 @@ public class ExtractorBlockEntity extends BlockEntity implements ImplementedCont
             BlockState state = level.getBlockState(pan);
             if (state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.OFF) {
                 level.setBlockAndUpdate(pan, state.setValue(ModProperties.ACTIVE_PROPERTY, ModProperties.ACTIVE_STATE.ON));
+                level.playSound(null, pan, SoundEvents.HONEY_BLOCK_BREAK, SoundSource.BLOCKS, 0.5F, 1F);
                 return true;
             }
         }

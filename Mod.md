@@ -9,12 +9,12 @@
   - [x] Liquid honey falls into drip pan placed below spigot
   - [x] Texture
     - [x] Animated active texture
-  - Sound
+  - [x] Sound
 - Drip Pan
   - [x] Place in front of and below honey extractor to collect honey
   - [x] Use with bucket to collect liquid honey
   - [x] Full drip pan places honey when broken
-  - Sound
+  - [x] Sound
 - Hive Tool
   - [x] Replace shears as the ideal tool for harvesting honey
   - [x] Pick up full hives like silk touch
@@ -23,12 +23,13 @@
   - [x] Flows farther in Nether
   - [x] Prevents fall damage in Nether
   - [x] Regeneration effect when in honey
-  - Sound
+  - Texture
+  - [x] Sound
     - [x] Heals half heart every tick
     - [x] Slowness debuff when regeneration expires
-    - Icon
+    - [x] Icon (placeholder)
       - [x] Exclusive with Regeneration effect
-      - Icon
+      - [x] Icon (placeholder)
 - Custom village structure
   - Generates in flower biomes
 - Equippable beekeeper veil

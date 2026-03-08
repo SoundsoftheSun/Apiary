@@ -4,6 +4,8 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -58,10 +60,12 @@ public class ExtractorBlock extends BaseEntityBlock {
             } else if (be.getItem(0).isEmpty()) {
                 be.setItem(0, player.getItemInHand(hand).getItem().getDefaultInstance());
                 if (!player.hasInfiniteMaterials()) player.getItemInHand(hand).shrink(1);
+                level.playSound(null, pos, SoundEvents.HONEY_BLOCK_STEP, SoundSource.BLOCKS, 0.2F, 1F);
                 be.setChanged();
             } else if (be.getItem(0).is(Items.HONEYCOMB)) {
                 be.getItem(0).grow(1);
                 if (!player.hasInfiniteMaterials()) player.getItemInHand(hand).shrink(1);
+                level.playSound(null, pos, SoundEvents.HONEY_BLOCK_STEP, SoundSource.BLOCKS, 0.2F, 1F);
                 be.setChanged();
             }
         }
