@@ -31,56 +31,56 @@ public class ModVillagers {
         // Level 1
         TradeOfferHelper.registerVillagerOffers(BEEKEEPER, 1, factories -> {
             factories.add((world,entity, random) -> new MerchantOffer(
-                    new ItemCost(Items.BEE_NEST, 1),
-                    new ItemStack(Items.EMERALD, 3), 7, 2, 0.04f));
+                    new ItemCost(Items.HONEYCOMB, 1),
+                    new ItemStack(ModItems.BEEKEEPER_SMITHING_TEMPLATE, 1), 1, 2, 0.04f));
 
             factories.add((world,entity, random) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 3),
-                    new ItemStack(Items.HONEYCOMB, 1), 9, 4, 0.04f));
+                    new ItemCost(Items.BEE_NEST, 1),
+                    new ItemStack(Items.EMERALD, 3), 3, 4, 0.04f));
         });
 
         // Level 2
         TradeOfferHelper.registerVillagerOffers(BEEKEEPER, 2, factories -> {
             factories.add((world,entity, random) -> new MerchantOffer(
-                    new ItemCost(Items.HONEY_BOTTLE, 1),
-                    new ItemStack(Items.EMERALD, 4), 9, 7, 0.04f));
+                    new ItemCost(Items.EMERALD, 4),
+                    new ItemStack(Items.BEEHIVE, 1), 3, 7, 0.04f));
 
             factories.add((world,entity, random) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 9),
-                    new ItemStack(Items.BEEHIVE, 1), 3, 7, 0.04f));
+                    new ItemCost(Items.HONEYCOMB, 4),
+                    new ItemStack(Items.EMERALD, 5), 7, 7, 0.04f));
         });
 
         // Level 3
         TradeOfferHelper.registerVillagerOffers(BEEKEEPER, 3, factories -> {
             factories.add((world,entity, random) -> new MerchantOffer(
-                    new ItemCost(Items.HONEYCOMB_BLOCK, 1),
-                    new ItemStack(Items.EMERALD, 4), 9, 7, 0.04f));
+                    new ItemCost(Items.EMERALD, 5),
+                    new ItemStack(ModItems.HIVE_TOOL, 1), 3, 7, 0.04f));
 
             factories.add((world,entity, random) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 1),
-                    new ItemStack(ModItems.HIVE_TOOL, 1), 3, 7, 0.04f));
+                    new ItemCost(Items.HONEY_BOTTLE, 1),
+                    new ItemStack(Items.EMERALD, 3), 7, 7, 0.04f));
         });
 
         // Level 4
         TradeOfferHelper.registerVillagerOffers(BEEKEEPER, 4, factories -> {
             factories.add((world,entity, random) -> new MerchantOffer(
-                    new ItemCost(ModItems.HONEY_BUCKET, 1),
-                    new ItemStack(Items.EMERALD, 7), 9, 7, 0.04f));
+                    new ItemCost(Items.EMERALD, 7),
+                    new ItemStack(ModItems.VEIL, 1), 9, 7, 0.04f));
 
             factories.add((world,entity, random) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 4),
-                    new ItemStack(Items.HONEY_BLOCK, 1), 9, 7, 0.04f));
+                    new ItemCost(ModItems.HONEY_BUCKET, 1),
+                    new ItemStack(Items.EMERALD, 7), 9, 7, 0.04f));
         });
 
         // Level 5
         TradeOfferHelper.registerVillagerOffers(BEEKEEPER, 5, factories -> {
             factories.add((world,entity, random) -> new MerchantOffer(
-                    new ItemCost(Items.HONEYCOMB_BLOCK, 1),
-                    new ItemStack(Items.EMERALD, 7), 9, 7, 0.04f));
+                    new ItemCost(Items.EMERALD, 6),
+                    new ItemStack(Items.HONEY_BLOCK, 1), 9, 7, 0.04f));
 
             factories.add((world,entity, random) -> new MerchantOffer(
-                    new ItemCost(Items.HONEY_BOTTLE, 1),
-                    new ItemStack(Items.EMERALD, 7), 3, 7, 0.04f));
+                    new ItemCost(Items.HONEYCOMB_BLOCK, 1),
+                    new ItemStack(Items.EMERALD, 7), 9, 7, 0.04f));
         });
     }
 

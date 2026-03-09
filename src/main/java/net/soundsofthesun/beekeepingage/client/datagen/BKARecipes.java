@@ -28,9 +28,12 @@ public class BKARecipes extends FabricRecipeProvider {
             public void buildRecipes() {
                 //HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
-                shapeless(RecipeCategory.TOOLS, ModItems.HIVE_TOOL)
-                        .requires(Items.STICK)
-                        .requires(Items.IRON_INGOT)
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEY_EXTRACTOR)
+                        .pattern(" ci")
+                        .pattern(" i ")
+                        .pattern("i  ")
+                        .define('c', Items.COPPER_INGOT)
+                        .define('i', Items.IRON_INGOT)
                         .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
                         .save(output);
 
@@ -42,7 +45,6 @@ public class BKARecipes extends FabricRecipeProvider {
                         .define('x', Items.HONEYCOMB)
                         .define('m', ModItems.MESH)
                         .define('c', Items.CAULDRON)
-                        .group(BKA.MOD_ID)
                         .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
                         .save(output);
 
@@ -51,7 +53,6 @@ public class BKARecipes extends FabricRecipeProvider {
                         .pattern("w w")
                         .pattern("www")
                         .define('w', Items.IRON_INGOT)
-                        .group(BKA.MOD_ID)
                         .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
                         .save(output);
 
@@ -60,7 +61,6 @@ public class BKARecipes extends FabricRecipeProvider {
                         .pattern("SSS")
                         .pattern("SSS")
                         .define('S', Items.STRING)
-                        .group(BKA.MOD_ID)
                         .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
                         .save(output);
 
@@ -74,6 +74,19 @@ public class BKARecipes extends FabricRecipeProvider {
                         .save(output);
 
                 trimSmithing(ModItems.BEEKEEPER_SMITHING_TEMPLATE, ModItems.SMITHING_BEEKEEPER_PATTERN, ResourceKey.create(Registries.RECIPE, BKA.id("beekeeper_pattern")));
+
+                shapeless(RecipeCategory.MISC, ModItems.BEEKEEPER_SMITHING_TEMPLATE)
+                        .requires(Items.HONEYCOMB)
+                        .requires(Items.STONE)
+                        .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
+                        .save(output);
+
+                shapeless(RecipeCategory.MISC, ModItems.BEEKEEPER_SMITHING_TEMPLATE)
+                        .requires(ModItems.BEEKEEPER_SMITHING_TEMPLATE)
+                        .requires(Items.STONE)
+                        .unlockedBy(getHasName(ModItems.BEEKEEPER_SMITHING_TEMPLATE), has(ModItems.BEEKEEPER_SMITHING_TEMPLATE))
+                        .save(output);
+
             }
         };
     }
