@@ -3,10 +3,7 @@
     "frametime": 3,
     "interpolate": false,
     "frames": [
-      3,
-      1,
-      4,
-      2
+      0,1,2,3
     ]
   }
 }
