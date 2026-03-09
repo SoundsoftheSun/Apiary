@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     {
-      "id": "apiary:beekeeper_poi",
+      "id": "beekeepingage:beekeeper_poi",
       "required": false
     }
   ]

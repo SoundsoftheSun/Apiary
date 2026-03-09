@@ -1,27 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "apiary",
+  "id": "beekeepingage",
   "version": "${version}",
-  "name": "Apiary",
+  "name": "Beekeeping Age",
   "description": "",
   "authors": [],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/apiary/icon.png",
+  "icon": "assets/beekeepingage/icon.png",
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "net.soundsofthesun.apiary.client.ApiaryDataGenerator"
+      "net.soundsofthesun.beekeepingage.client.BKADataGenerator"
     ],
     "client": [
-      "net.soundsofthesun.apiary.client.ApiaryClient"
+      "net.soundsofthesun.beekeepingage.client.BKAClient"
     ],
     "main": [
-      "net.soundsofthesun.apiary.Apiary"
+      "net.soundsofthesun.beekeepingage.BKA"
     ]
   },
   "mixins": [
-    "apiary.mixins.json"
+    "beekeepingage.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",

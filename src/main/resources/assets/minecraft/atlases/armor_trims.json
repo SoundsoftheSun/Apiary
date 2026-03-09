@@ -4,8 +4,8 @@
     {
       "type": "paletted_permutations",
       "textures": [
-        "apiary:trims/entity/humanoid/beekeeper_pattern",
-        "apiary:trims/entity/humanoid_leggings/beekeeper_pattern"
+        "beekeepingage:trims/entity/humanoid/beekeeper_pattern",
+        "beekeepingage:trims/entity/humanoid_leggings/beekeeper_pattern"
       ],
       "palette_key": "trims/color_palettes/trim_palette",
       "permutations": {

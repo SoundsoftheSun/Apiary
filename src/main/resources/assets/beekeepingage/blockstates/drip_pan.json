@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=off": {
+      "model": "beekeepingage:block/drip_pan"
+    },
+    "active=on": {
+      "model": "beekeepingage:block/drip_pan_full"
+    }
+  }
+}

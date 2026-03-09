@@ -17,7 +17,7 @@
                 {
                   "condition": "minecraft:match_tool",
                   "predicate": {
-                    "items": "apiary:hive_tool"
+                    "items": "beekeepingage:hive_tool"
                   }
                 }
               ]

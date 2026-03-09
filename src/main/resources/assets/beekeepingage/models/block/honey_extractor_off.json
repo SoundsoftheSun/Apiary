@@ -1,0 +1,10 @@
+{
+  "parent": "beekeepingage:block/honey_extractor_base",
+  "textures": {
+    "0": "beekeepingage:block/honey_extractor_bottom",
+    "1": "beekeepingage:block/honey_extractor_top",
+    "2": "beekeepingage:block/honey_extractor_side",
+    "3": "beekeepingage:block/honey_extractor_subblocks",
+    "particle": "beekeepingage:block/honey_extractor_side"
+  }
+}
