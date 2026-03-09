@@ -26,7 +26,7 @@ public class ModItems {
     public static final Item MESH = register("mesh", Item::new, new Item.Properties());
 
     public static final ResourceKey<TrimPattern> SMITHING_BEEKEEPER_PATTERN = ResourceKey.create(Registries.TRIM_PATTERN, Apiary.id("beekeeper_pattern"));
-    public static final Item BEEKEEPER_SMITHING_TEMPLATE = register("beekeeper_smithing_template", SmithingTemplateItem::createArmorTrimTemplate, new Item.Properties());
+    public static final Item BEEKEEPER_SMITHING_TEMPLATE = register("beekeeper_smithing_template", SmithingTemplateItem::createArmorTrimTemplate, new Item.Properties().rarity(Rarity.UNCOMMON));
 
     public static final Item HONEY_BUCKET = register("honey_bucket", properties -> new BucketItem(ModBlocks.HONEY_SOURCE, properties), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1));
 
@@ -35,9 +35,9 @@ public class ModItems {
         output.accept(ModBlocks.DRIP_PAN);
         output.accept(ModItems.HONEY_BUCKET);
         output.accept(ModItems.HIVE_TOOL);
+        output.accept(ModItems.BEEKEEPER_SMITHING_TEMPLATE);
         output.accept(ModItems.VEIL);
         output.accept(ModItems.MESH);
-        output.accept(ModItems.BEEKEEPER_SMITHING_TEMPLATE);
     };
 
     public static void bootstrapTrims(BootstrapContext<TrimPattern> context) {

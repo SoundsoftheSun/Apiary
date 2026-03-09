@@ -40,7 +40,10 @@ public class EnglishProvider extends FabricLanguageProvider {
                 "Bucket of Honey");
 
         translationBuilder.add("item."+MOD_ID+".beekeeper_smithing_template",
-                "Beekeeper Armor Trim");
+                "Stele of Beekeeping Wisdom");
+
+        translationBuilder.add(MOD_ID+".template_description",
+                "Contains Ancient Beekeeping Knowledge");
 
         translationBuilder.add("trim_pattern."+MOD_ID+".beekeeper_pattern",
                 "Beekeeper Armor Trim");
