@@ -2,6 +2,7 @@ package net.soundsofthesun.apiary;
 
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
+import net.soundsofthesun.apiary.advancement.ModCriteria;
 import net.soundsofthesun.apiary.blocks.ModBlockEntities;
 import net.soundsofthesun.apiary.blocks.ModBlocks;
 import net.soundsofthesun.apiary.effects.ModEffects;
@@ -24,6 +25,7 @@ public class Apiary implements ModInitializer {
         ModItems.init();
         ModVillagers.init();
         ModEffects.init();
+        ModCriteria.init();
 
     }
 

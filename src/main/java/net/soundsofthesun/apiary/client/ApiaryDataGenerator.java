@@ -21,6 +21,7 @@ public class ApiaryDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(ApiaryFluidTags::new);
         pack.addProvider(ApiaryItemTags::new);
         pack.addProvider(ApiaryRegistries::new);
+        pack.addProvider(ApiaryAdvancements::new);
     }
 
     @Override

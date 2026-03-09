@@ -61,7 +61,7 @@ public class ApiaryRecipes extends FabricRecipeProvider {
                         .pattern("SSS")
                         .define('S', Items.STRING)
                         .group(Apiary.MOD_ID)
-                        .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
+                        .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
                         .save(output);
 
                 shaped(RecipeCategory.TOOLS, ModItems.VEIL)
@@ -70,7 +70,7 @@ public class ApiaryRecipes extends FabricRecipeProvider {
                         .pattern(" M ")
                         .define('c', ItemTags.WOOL_CARPETS)
                         .define('M', ModItems.MESH)
-                        .unlockedBy(getHasName(ModItems.MESH), has(ModItems.MESH))
+                        .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
                         .save(output);
 
                 trimSmithing(ModItems.BEEKEEPER_SMITHING_TEMPLATE, ModItems.SMITHING_BEEKEEPER_PATTERN, ResourceKey.create(Registries.RECIPE, Apiary.id("beekeeper_pattern")));

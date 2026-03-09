@@ -35,9 +35,26 @@
 - Equippable beekeeper veil
   - [x] Prevents bee anger on harvest; alternative to campfire
   - [x] Reduce damage from angry bees
-- Advancements
-- Armor Trim
+- Guidebook + Armor Trim combo
   - [x] Striped beekeeper armor trim
+  - [ ] Tutorial guidebook
+
+# Advancements
+- Beginner
+  - "Apiary"
+    - Obtain honeycomb
+  - "Mutualism"
+    - Craft a beehive
+- Intermediate
+  - "Worker Bee"
+    - Obtain and use a hive tool
+  - "Ethical Apiculture"
+    - Obtain a veil and harvest some honey without using a campfire
+- Advanced
+  - "Efficient Extraction"
+    - Obtain and use a honey extractor
+  - "Known Laws of Aviation"
+    - Survive a lethal fall in the Nether using liquid honey
 
 # New Gameplay mechanics (tentative)
 - [x] Smoked-out beehives will NOT produce honey

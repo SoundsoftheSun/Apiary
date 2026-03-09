@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -28,6 +29,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.soundsofthesun.apiary.advancement.ModCriteria;
 import net.soundsofthesun.apiary.blocks.ModBlockEntities;
 import net.soundsofthesun.apiary.blocks.ModProperties;
 import org.jspecify.annotations.NonNull;
@@ -55,6 +57,7 @@ public class ExtractorBlock extends BaseEntityBlock {
                 if (!player.hasInfiniteMaterials()) player.getItemInHand(hand).shrink(1);
                 be.clearContent();
                 level.setBlockAndUpdate(pos, state.setValue(ModProperties.ACTIVE_PROPERTY, ModProperties.ACTIVE_STATE.ON));
+                ModCriteria.USE_EXTRACTOR.trigger((ServerPlayer) player);
                 be.ticks = 0;
                 be.setChanged();
             } else if (be.getItem(0).isEmpty()) {
