@@ -3,7 +3,10 @@ package net.soundsofthesun.apiary.mixin;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.dialog.Dialog;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -17,6 +20,7 @@ import net.soundsofthesun.apiary.Apiary;
 import net.soundsofthesun.apiary.items.ModItems;
 import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 
 import java.util.function.Consumer;
 
@@ -26,9 +30,12 @@ public abstract class SmithingTemplateItemMixin extends Item {
         super(properties);
     }
 
+    @Unique
+    ResourceKey<Dialog> guideDialogKey = ResourceKey.create(Registries.DIALOG, Apiary.id("dialog"));
+
     @Override
     public @NonNull InteractionResult use(Level level, Player player, InteractionHand hand) {
-
+        level.registryAccess().lookup(Registries.DIALOG).flatMap(registry -> registry.get(guideDialogKey)).ifPresent(player::openDialog);
         return super.use(level, player, hand);
     }
 

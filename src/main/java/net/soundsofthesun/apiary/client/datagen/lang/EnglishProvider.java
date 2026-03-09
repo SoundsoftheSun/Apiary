@@ -69,5 +69,38 @@ public class EnglishProvider extends FabricLanguageProvider {
         translationBuilder.add("tag.item."+MOD_ID+".bee_stuff",
                 "Beekeeping Items");
 
+
+
+
+
+
+
+
+        translationBuilder.add("book."+MOD_ID+".title",
+                "Apiary");
+
+        translationBuilder.add("book."+MOD_ID+".body_one",
+                "Guide body one");
+
+        translationBuilder.add("book."+MOD_ID+".body_two",
+                """
+                        Guidebook body two!
+                        Guidebook body two!
+                        Guidebook body two!
+                        Guidebook body two!
+                        Guidebook body two!
+                        Guidebook body two!
+                        Guidebook body two!
+                        Guidebook body two!
+                        Guidebook body two!
+                        Guidebook body two!
+                        Guidebook body two!
+                        Guidebook body two!
+
+                        """
+        );
+
+
+
     }
 }
