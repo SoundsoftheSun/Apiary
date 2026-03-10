@@ -28,7 +28,7 @@ public class BKARecipes extends FabricRecipeProvider {
             public void buildRecipes() {
                 //HolderLookup.RegistryLookup<Item> itemLookup = registries.lookupOrThrow(Registries.ITEM);
 
-                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEY_EXTRACTOR)
+                shaped(RecipeCategory.TOOLS, ModItems.HIVE_TOOL)
                         .pattern(" ci")
                         .pattern(" i ")
                         .pattern("i  ")
@@ -79,12 +79,6 @@ public class BKARecipes extends FabricRecipeProvider {
                         .requires(Items.HONEYCOMB)
                         .requires(Items.STONE)
                         .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
-                        .save(output);
-
-                shapeless(RecipeCategory.MISC, ModItems.BEEKEEPER_SMITHING_TEMPLATE)
-                        .requires(ModItems.BEEKEEPER_SMITHING_TEMPLATE)
-                        .requires(Items.STONE)
-                        .unlockedBy(getHasName(ModItems.BEEKEEPER_SMITHING_TEMPLATE), has(ModItems.BEEKEEPER_SMITHING_TEMPLATE))
                         .save(output);
 
             }

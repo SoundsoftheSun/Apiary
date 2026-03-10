@@ -3,6 +3,7 @@ package net.soundsofthesun.beekeepingage.mixin;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Attackable;
@@ -15,6 +16,7 @@ import net.soundsofthesun.beekeepingage.advancement.ModCriteria;
 import net.soundsofthesun.beekeepingage.blocks.ModBlocks;
 import net.soundsofthesun.beekeepingage.client.datagen.BKAFluidTags;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(LivingEntity.class)
@@ -29,14 +31,17 @@ public abstract class LivingEntityMixin extends Entity implements Attackable, Wa
         return original.call(instance) || this.updateFluidHeightAndDoFluidPushing(BKAFluidTags.HONEY_TAG, 0.014D);
     }
 
-    @WrapMethod(method = "causeFallDamage")
-    boolean bka$negateHoneyFallDamage(double fallDistance, float damageMultiplier, DamageSource damageSource, Operation<Boolean> original) {
-        // Block fall damage if honey is in nether
-        if (this.getInBlockState().is(ModBlocks.HONEY_FLUID_BLOCK) && this.level().dimension() == Level.NETHER) {
-            if ((((LivingEntity)(Object)this)) instanceof ServerPlayer serverPlayer) ModCriteria.HONEY_CLUTCH.trigger(serverPlayer);
-            return false;
+    @WrapOperation(method = "causeFallDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;calculateFallDamage(DF)I"))
+    int sun$negateHoneyFallDamage(LivingEntity instance, double fallDistance, float damageMultiplier, Operation<Integer> original) {
+        // Negate fall damage when landing in honey in the nether
+        int og = original.call(instance, fallDistance, damageMultiplier);
+        if (og > 0 && this.getInBlockState().is(ModBlocks.HONEY_FLUID_BLOCK) && this.level().dimension() == Level.NETHER) {
+            if ((((LivingEntity)(Object)this)) instanceof ServerPlayer serverPlayer && serverPlayer.getHealth() - og <= 0) {
+                ModCriteria.HONEY_CLUTCH.trigger(serverPlayer);
+            }
+            return 0;
         }
-        return original.call(fallDistance, damageMultiplier, damageSource);
+        return og;
     }
 
 }

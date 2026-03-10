@@ -34,7 +34,7 @@ public class BKAAdvancements extends FabricAdvancementProvider {
                         Items.HONEYCOMB,
                         Component.translatable(MOD_ID+".advancement.get_bee_items"),
                         Component.translatable(MOD_ID+".advancement.get_bee_items.description"),
-                        Identifier.withDefaultNamespace("textures/gui/advancements/backgrounds/adventure.png"), // Background image for the tab in the advancements page, if this is a root advancement (has no parent)
+                        Identifier.withDefaultNamespace("block/bee_nest_side"), // Background image
                         AdvancementType.TASK,
                         true, // Show toast
                         true, // Announce
