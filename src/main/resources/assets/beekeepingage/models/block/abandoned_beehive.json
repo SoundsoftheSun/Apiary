@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "beekeepingage:block/abandoned_beehive_end",
+    "front": "beekeepingage:block/abandoned_beehive_front",
+    "particle": "beekeepingage:block/abandoned_beehive_side",
+    "side": "beekeepingage:block/abandoned_beehive_side",
+    "top": "beekeepingage:block/abandoned_beehive_end"
+  }
+}
