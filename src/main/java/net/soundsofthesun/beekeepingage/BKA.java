@@ -3,8 +3,9 @@ package net.soundsofthesun.beekeepingage;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
 import net.soundsofthesun.beekeepingage.advancement.ModCriteria;
-import net.soundsofthesun.beekeepingage.blocks.ModBlockEntities;
-import net.soundsofthesun.beekeepingage.blocks.ModBlocks;
+import net.soundsofthesun.beekeepingage.block.ModBlockEntities;
+import net.soundsofthesun.beekeepingage.block.ModBlocks;
+import net.soundsofthesun.beekeepingage.components.ModComponents;
 import net.soundsofthesun.beekeepingage.effects.ModEffects;
 import net.soundsofthesun.beekeepingage.entity.ModVillagers;
 import net.soundsofthesun.beekeepingage.items.ModItems;
@@ -20,6 +21,7 @@ public class BKA implements ModInitializer {
     @Override
     public void onInitialize() {
 
+        ModComponents.init();
         ModBlocks.init();
         ModBlockEntities.init();
         ModItems.init();

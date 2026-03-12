@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.resources.Identifier;
-import net.soundsofthesun.beekeepingage.blocks.ModBlocks;
+import net.soundsofthesun.beekeepingage.block.ModBlocks;
 
 public class BKAClient implements ClientModInitializer {
 

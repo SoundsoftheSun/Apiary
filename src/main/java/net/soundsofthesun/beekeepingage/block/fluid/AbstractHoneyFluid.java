@@ -1,4 +1,4 @@
-package net.soundsofthesun.beekeepingage.blocks.fluid;
+package net.soundsofthesun.beekeepingage.block.fluid;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

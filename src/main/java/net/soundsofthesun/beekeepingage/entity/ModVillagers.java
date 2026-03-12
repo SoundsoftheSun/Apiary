@@ -16,7 +16,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.soundsofthesun.beekeepingage.BKA;
-import net.soundsofthesun.beekeepingage.blocks.ModBlocks;
+import net.soundsofthesun.beekeepingage.block.ModBlocks;
 import net.soundsofthesun.beekeepingage.items.ModItems;
 
 public class ModVillagers {

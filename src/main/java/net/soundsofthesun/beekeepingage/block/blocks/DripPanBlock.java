@@ -1,4 +1,4 @@
-package net.soundsofthesun.beekeepingage.blocks.pan;
+package net.soundsofthesun.beekeepingage.block.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -18,9 +18,9 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.soundsofthesun.beekeepingage.blocks.ModBlocks;
-import net.soundsofthesun.beekeepingage.blocks.ModProperties;
-import net.soundsofthesun.beekeepingage.blocks.fluid.HoneyFluid;
+import net.soundsofthesun.beekeepingage.block.ModBlocks;
+import net.soundsofthesun.beekeepingage.block.ModProperties;
+import net.soundsofthesun.beekeepingage.block.fluid.HoneyFluid;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 

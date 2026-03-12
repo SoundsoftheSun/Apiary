@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.soundsofthesun.beekeepingage.BKA;
-import net.soundsofthesun.beekeepingage.blocks.ModBlocks;
+import net.soundsofthesun.beekeepingage.block.ModBlocks;
 import net.soundsofthesun.beekeepingage.items.ModItems;
 import org.jspecify.annotations.NonNull;
 

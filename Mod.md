@@ -60,12 +60,13 @@
 - [x] Smoked-out beehives will NOT produce honey
 - Revitalization mechanic
   - Ghost Bees
-  - Abandoned Beehives
+  - [x] Abandoned Beehives
   - Abandoned beekeeper grounds
   - Players find abandoned structure
-    - repair abandoned beehives
+    - [x] repair abandoned beehives with honeycomb
     - ghost bees turn to normal bees again
-    - increased rates and better trades from villager
+    - [x] increased rates
+    - better trades from villager
 
 # Crafting Items
 

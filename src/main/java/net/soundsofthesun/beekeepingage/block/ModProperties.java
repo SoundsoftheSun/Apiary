@@ -1,4 +1,4 @@
-package net.soundsofthesun.beekeepingage.blocks;
+package net.soundsofthesun.beekeepingage.block;
 
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.state.properties.EnumProperty;

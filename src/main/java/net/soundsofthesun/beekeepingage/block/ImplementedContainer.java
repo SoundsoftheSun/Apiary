@@ -1,4 +1,4 @@
-package net.soundsofthesun.beekeepingage.blocks;
+package net.soundsofthesun.beekeepingage.block;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.Container;

@@ -1,4 +1,4 @@
-package net.soundsofthesun.beekeepingage.blocks.fluid;
+package net.soundsofthesun.beekeepingage.block.fluid;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import net.soundsofthesun.beekeepingage.blocks.ModBlocks;
+import net.soundsofthesun.beekeepingage.block.ModBlocks;
 import net.soundsofthesun.beekeepingage.effects.ModEffects;
 import net.soundsofthesun.beekeepingage.items.ModItems;
 import org.jspecify.annotations.NonNull;

@@ -1,4 +1,4 @@
-package net.soundsofthesun.beekeepingage.blocks.extractor;
+package net.soundsofthesun.beekeepingage.block.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -30,8 +30,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.soundsofthesun.beekeepingage.advancement.ModCriteria;
-import net.soundsofthesun.beekeepingage.blocks.ModBlockEntities;
-import net.soundsofthesun.beekeepingage.blocks.ModProperties;
+import net.soundsofthesun.beekeepingage.block.ModBlockEntities;
+import net.soundsofthesun.beekeepingage.block.ModProperties;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
