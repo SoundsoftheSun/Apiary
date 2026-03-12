@@ -37,7 +37,7 @@ public class AbandonedHive extends HorizontalDirectionalBlock {
         if (stack.is(Items.HONEYCOMB)) {
             if (!player.hasInfiniteMaterials()) stack.shrink(1);
 
-            level.setBlockAndUpdate(pos, Blocks.BEEHIVE.defaultBlockState());
+            level.setBlockAndUpdate(pos, Blocks.BEEHIVE.defaultBlockState().setValue(FACING, state.getValue(FACING)));
             if (level.getBlockEntity(pos) instanceof BeehiveBlockEntity be) {
                 be.setComponents(DataComponentMap.builder()
                     .addAll(be.components())

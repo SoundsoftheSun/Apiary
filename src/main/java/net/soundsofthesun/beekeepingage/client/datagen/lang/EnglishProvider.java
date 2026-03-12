@@ -28,6 +28,9 @@ public class EnglishProvider extends FabricLanguageProvider {
         translationBuilder.add(MOD_ID+".tooltip.restored",
                 "Restored");
 
+        translationBuilder.add(MOD_ID+".tooltip.restored.desc",
+                "25% honey bonus");
+
 
 
         // Blocks

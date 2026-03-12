@@ -22,7 +22,10 @@ public class ModComponents {
     public record RestoredComponent(Boolean bool) implements TooltipProvider {
         @Override
         public void addToTooltip(Item.@NonNull TooltipContext context, @NonNull Consumer<Component> tooltipAdder, @NonNull TooltipFlag flag, @NonNull DataComponentGetter componentGetter) {
-            if (bool) tooltipAdder.accept(Component.translatable(BKA.MOD_ID+".tooltip.restored").withStyle(ChatFormatting.GOLD));
+            if (bool) {
+                tooltipAdder.accept(Component.translatable(BKA.MOD_ID+".tooltip.restored").withStyle(ChatFormatting.GOLD));
+                tooltipAdder.accept(Component.translatable(BKA.MOD_ID+".tooltip.restored.desc").withStyle(ChatFormatting.GRAY));
+            }
         }
         public static final RestoredComponent DEFAULT = new RestoredComponent(false);
         public static final Codec<RestoredComponent> CODEC = RecordCodecBuilder.create(builder -> builder.group(

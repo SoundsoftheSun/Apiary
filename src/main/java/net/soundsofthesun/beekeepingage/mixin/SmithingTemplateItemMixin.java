@@ -34,8 +34,8 @@ public abstract class SmithingTemplateItemMixin extends Item {
     ResourceKey<Dialog> guideDialogKey = ResourceKey.create(Registries.DIALOG, BKA.id("dialog"));
 
     @Override
-    public @NonNull InteractionResult use(Level level, Player player, @NonNull InteractionHand hand) {
-        level.registryAccess().lookup(Registries.DIALOG).flatMap(registry -> registry.get(guideDialogKey)).ifPresent(player::openDialog);
+    public @NonNull InteractionResult use(@NonNull Level level, Player player, @NonNull InteractionHand hand) {
+        if (player.getItemInHand(hand).is(ModItems.BEEKEEPER_SMITHING_TEMPLATE)) level.registryAccess().lookup(Registries.DIALOG).flatMap(registry -> registry.get(guideDialogKey)).ifPresent(player::openDialog);
         return super.use(level, player, hand);
     }
 
