@@ -1,4 +1,4 @@
-package net.soundsofthesun.beekeepingage.blocks;
+package net.soundsofthesun.beekeepingage.block;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -8,7 +8,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -17,11 +16,10 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.soundsofthesun.beekeepingage.BKA;
-import net.soundsofthesun.beekeepingage.blocks.extractor.ExtractorBlock;
-import net.soundsofthesun.beekeepingage.blocks.fluid.HoneyFluid;
-import net.soundsofthesun.beekeepingage.blocks.hive.AbandonedHive;
-import net.soundsofthesun.beekeepingage.blocks.hive.RestoredHive;
-import net.soundsofthesun.beekeepingage.blocks.pan.DripPanBlock;
+import net.soundsofthesun.beekeepingage.block.blocks.AbandonedHive;
+import net.soundsofthesun.beekeepingage.block.blocks.DripPanBlock;
+import net.soundsofthesun.beekeepingage.block.blocks.ExtractorBlock;
+import net.soundsofthesun.beekeepingage.block.fluid.HoneyFluid;
 
 import java.util.function.Function;
 
@@ -62,15 +60,6 @@ public class ModBlocks {
                     .noLootTable(),
             true
     );
-
-    public static final Block RESTORED_BEEHIVE = register(
-            "restored_beehive",
-            RestoredHive::new,
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BEEHIVE),
-            true
-    );
-
-
 
     public static final FlowingFluid HONEY_SOURCE = Registry.register(BuiltInRegistries.FLUID, BKA.id("honey_source"), new HoneyFluid.Still());
     public static final FlowingFluid HONEY_FLOWING = Registry.register(BuiltInRegistries.FLUID, BKA.id("honey_flowing"), new HoneyFluid.Flowing());

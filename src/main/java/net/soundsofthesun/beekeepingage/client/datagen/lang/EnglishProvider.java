@@ -22,7 +22,19 @@ public class EnglishProvider extends FabricLanguageProvider {
                 MOD_NAME);
 
 
+
+        // Tooltips
+
+        translationBuilder.add(MOD_ID+".tooltip.restored",
+                "Restored");
+
+
+
         // Blocks
+
+        translationBuilder.add("block."+MOD_ID+".abandoned_beehive",
+                "Abandoned Beehive");
+
         translationBuilder.add("block."+MOD_ID+".honey_extractor",
                 "Honey Extractor");
 

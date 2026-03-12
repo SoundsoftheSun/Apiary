@@ -41,7 +41,8 @@
                 {
                   "function": "minecraft:copy_components",
                   "include": [
-                    "minecraft:bees"
+                    "minecraft:bees",
+                    "beekeepingage:restored"
                   ],
                   "source": "block_entity"
                 },

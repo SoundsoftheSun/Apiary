@@ -12,8 +12,10 @@ import net.minecraft.util.Util;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.trim.TrimPattern;
+import net.minecraft.world.level.block.Blocks;
 import net.soundsofthesun.beekeepingage.BKA;
-import net.soundsofthesun.beekeepingage.blocks.ModBlocks;
+import net.soundsofthesun.beekeepingage.block.ModBlocks;
+import net.soundsofthesun.beekeepingage.components.ModComponents;
 
 import java.util.function.Function;
 
@@ -34,7 +36,9 @@ public class ModItems {
         output.accept(ModBlocks.HONEY_EXTRACTOR);
         output.accept(ModBlocks.DRIP_PAN);
         output.accept(ModBlocks.ABANDONED_BEEHIVE);
-        output.accept(ModBlocks.RESTORED_BEEHIVE);
+        ItemStack restoredHive = new ItemStack(Blocks.BEEHIVE.asItem());
+        restoredHive.set(ModComponents.BEEHIVE_RESTORED, new ModComponents.RestoredComponent(true));
+        output.accept(restoredHive);
         output.accept(ModItems.HONEY_BUCKET);
         output.accept(ModItems.HIVE_TOOL);
         output.accept(ModItems.BEEKEEPER_SMITHING_TEMPLATE);
