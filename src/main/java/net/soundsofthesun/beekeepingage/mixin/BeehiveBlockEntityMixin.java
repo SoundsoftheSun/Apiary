@@ -34,20 +34,18 @@ public abstract class BeehiveBlockEntityMixin extends BlockEntity {
         if (!this.restored.bool() && instance.components().has(ModComponents.BEEHIVE_RESTORED) && instance.components().get(ModComponents.BEEHIVE_RESTORED).bool()) {
             this.restored = new ModComponents.RestoredComponent(true);
         }
+        original.call(instance);
     }
 
     @WrapOperation(method = "releaseOccupant", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;setBlockAndUpdate(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Z"))
     private static boolean bka$blockHoneyIfSmokey(Level instance, BlockPos pos, BlockState state, Operation<Boolean> original) {
         if (CampfireBlock.isSmokeyPos(instance, pos)) {
             // Block honey increase if smokey
-            System.out.println("::::::::::SMOKEY::::::::::");
             return false;
         } else if (instance.getBlockEntity(pos) instanceof BeehiveBlockEntityMixin be && instance.getRandom().nextInt(4) == 0 && be.restored.bool() && state.getValue(BeehiveBlock.HONEY_LEVEL) < 5) {
             // 25% chance for bonus honey if restored hive
-            System.out.println("::::::::::BONUS::::::::::");
             return original.call(instance, pos, state.setValue(BeehiveBlock.HONEY_LEVEL, state.getValue(BeehiveBlock.HONEY_LEVEL)+1));
         } else {
-            System.out.println("::::::::::NORMAL::::::::::");
             return original.call(instance, pos, state);
         }
     }
