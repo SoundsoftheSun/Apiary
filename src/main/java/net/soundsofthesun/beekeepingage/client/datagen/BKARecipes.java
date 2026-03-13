@@ -9,6 +9,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.soundsofthesun.beekeepingage.BKA;
 import net.soundsofthesun.beekeepingage.block.ModBlocks;
 import net.soundsofthesun.beekeepingage.items.ModItems;
@@ -71,6 +72,33 @@ public class BKARecipes extends FabricRecipeProvider {
                         .define('c', ItemTags.WOOL_CARPETS)
                         .define('M', ModItems.MESH)
                         .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
+                        .save(output);
+
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEYCOMB_WALL, Blocks.HONEYCOMB_BLOCK);
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEYCOMB_WALL, 6)
+                        .pattern("   ")
+                        .pattern("hhh")
+                        .pattern("hhh")
+                        .define('h', Blocks.HONEYCOMB_BLOCK)
+                        .unlockedBy(getHasName(Blocks.HONEYCOMB_BLOCK), has(Blocks.HONEYCOMB_BLOCK))
+                        .save(output);
+
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEYCOMB_SLAB, Blocks.HONEYCOMB_BLOCK, 2);
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEYCOMB_SLAB, 6)
+                        .pattern("   ")
+                        .pattern("   ")
+                        .pattern("hhh")
+                        .define('h', Blocks.HONEYCOMB_BLOCK)
+                        .unlockedBy(getHasName(Blocks.HONEYCOMB_BLOCK), has(Blocks.HONEYCOMB_BLOCK))
+                        .save(output);
+
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEYCOMB_STAIRS, Blocks.HONEYCOMB_BLOCK);
+                shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.HONEYCOMB_STAIRS, 4)
+                        .pattern("h  ")
+                        .pattern("hh ")
+                        .pattern("hhh")
+                        .define('h', Blocks.HONEYCOMB_BLOCK)
+                        .unlockedBy(getHasName(Blocks.HONEYCOMB_BLOCK), has(Blocks.HONEYCOMB_BLOCK))
                         .save(output);
 
                 trimSmithing(ModItems.BEEKEEPER_SMITHING_TEMPLATE, ModItems.SMITHING_BEEKEEPER_PATTERN, ResourceKey.create(Registries.RECIPE, BKA.id("beekeeper_pattern")));

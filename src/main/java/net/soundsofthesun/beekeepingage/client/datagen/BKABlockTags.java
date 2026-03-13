@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.soundsofthesun.beekeepingage.block.ModBlocks;
 import org.jspecify.annotations.NonNull;
 
@@ -19,11 +20,19 @@ public class BKABlockTags extends FabricTagProvider.BlockTagProvider {
         valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.HONEY_EXTRACTOR)
                 .add(ModBlocks.DRIP_PAN)
+                .add(Blocks.HONEYCOMB_BLOCK)
+                .add(ModBlocks.HONEYCOMB_STAIRS)
+                .add(ModBlocks.HONEYCOMB_SLAB)
+                .add(ModBlocks.HONEYCOMB_WALL)
                 .setReplace(false);
 
         valueLookupBuilder(BlockTags.INCORRECT_FOR_WOODEN_TOOL)
                 .add(ModBlocks.HONEY_EXTRACTOR)
                 .add(ModBlocks.DRIP_PAN)
+                .setReplace(false);
+
+        valueLookupBuilder(BlockTags.WALLS)
+                .add(ModBlocks.HONEYCOMB_WALL)
                 .setReplace(false);
     }
 

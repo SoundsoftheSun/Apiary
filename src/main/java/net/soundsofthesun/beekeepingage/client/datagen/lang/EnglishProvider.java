@@ -44,6 +44,15 @@ public class EnglishProvider extends FabricLanguageProvider {
         translationBuilder.add("block."+MOD_ID+".drip_pan",
                 "Drip Pan");
 
+        translationBuilder.add("block."+MOD_ID+".honeycomb_stairs",
+                "Honeycomb Stairs");
+
+        translationBuilder.add("block."+MOD_ID+".honeycomb_wall",
+                "Honeycomb Wall");
+
+        translationBuilder.add("block."+MOD_ID+".honeycomb_slab",
+                "Honeycomb Slab");
+
 
 
         // Items

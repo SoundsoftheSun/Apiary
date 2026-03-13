@@ -44,6 +44,9 @@ public class ModItems {
         output.accept(ModItems.BEEKEEPER_SMITHING_TEMPLATE);
         output.accept(ModItems.VEIL);
         output.accept(ModItems.MESH);
+        output.accept(ModBlocks.HONEYCOMB_SLAB);
+        output.accept(ModBlocks.HONEYCOMB_STAIRS);
+        output.accept(ModBlocks.HONEYCOMB_WALL);
     };
 
     public static void bootstrapTrims(BootstrapContext<TrimPattern> context) {

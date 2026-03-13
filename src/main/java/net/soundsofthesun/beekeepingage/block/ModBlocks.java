@@ -7,9 +7,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -60,6 +58,10 @@ public class ModBlocks {
                     .noLootTable(),
             true
     );
+
+    public static final Block HONEYCOMB_STAIRS = register("honeycomb_stairs", p -> new StairBlock(Blocks.HONEYCOMB_BLOCK.defaultBlockState(), p), BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK), true);
+    public static final Block HONEYCOMB_SLAB = register("honeycomb_slab", SlabBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK), true);
+    public static final Block HONEYCOMB_WALL = register("honeycomb_wall", WallBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.HONEYCOMB_BLOCK), true);
 
     public static final FlowingFluid HONEY_SOURCE = Registry.register(BuiltInRegistries.FLUID, BKA.id("honey_source"), new HoneyFluid.Still());
     public static final FlowingFluid HONEY_FLOWING = Registry.register(BuiltInRegistries.FLUID, BKA.id("honey_flowing"), new HoneyFluid.Flowing());

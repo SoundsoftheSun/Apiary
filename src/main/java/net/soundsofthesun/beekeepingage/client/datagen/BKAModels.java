@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.world.level.block.Blocks;
+import net.soundsofthesun.beekeepingage.block.ModBlocks;
 import net.soundsofthesun.beekeepingage.items.ModItems;
 import org.jspecify.annotations.NonNull;
 
@@ -15,6 +17,10 @@ public class BKAModels extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(@NonNull BlockModelGenerators blocks) {
+        blocks.family(Blocks.HONEYCOMB_BLOCK)
+                .slab(ModBlocks.HONEYCOMB_SLAB)
+                .stairs(ModBlocks.HONEYCOMB_STAIRS)
+                .wall(ModBlocks.HONEYCOMB_WALL);
     }
 
     @Override

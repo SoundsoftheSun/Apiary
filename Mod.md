@@ -10,6 +10,7 @@
   - [x] Texture
     - [x] Animated active texture
   - [x] Sound
+  - Custom component for generated ones to provide better trades to villager
 - Drip Pan
   - [x] Place in front of and below honey extractor to collect honey
   - [x] Use with bucket to collect liquid honey
@@ -30,14 +31,22 @@
     - [x] Icon (placeholder)
       - [x] Exclusive with Regeneration effect
       - [x] Icon (placeholder)
-- Custom village structure
+- Apiary (Custom generated structure)
   - Generates in flower biomes
+  - Beehives do not drop anything
+    - Always honey level 5
+  - Abandoned Apiary
+    - Contains abandoned beehives
+    - Zombie villager
 - Equippable beekeeper veil
   - [x] Prevents bee anger on harvest; alternative to campfire
   - [x] Reduce damage from angry bees
 - Guidebook + Armor Trim combo
   - [x] Striped beekeeper armor trim
   - [ ] Tutorial guidebook
+- Honeycomb Block family
+  - Slabs, stairs, wall
+  - Honeycomb block added to pickaxe block tags
 
 # Advancements
 - Beginner
@@ -67,6 +76,7 @@
     - ghost bees turn to normal bees again
     - [x] increased rates
     - better trades from villager
+- Beehive upgrades?
 
 # Crafting Items
 
