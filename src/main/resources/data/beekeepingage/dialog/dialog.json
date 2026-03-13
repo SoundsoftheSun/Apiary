@@ -1,36 +1,25 @@
 {
-  "type": "minecraft:dialog_list",
+  "type": "minecraft:multi_action",
   "title": {
     "translate": "book.beekeepingage.title",
-    "fallback": "Title fallback",
+    "fallback": "Beekeeping Age",
     "with": [],
     "type": "translatable",
     "color": "#f6d32d",
     "shadow_color": 0,
     "bold": true,
-    "italic": false,
-    "click_event": {
-      "action": "open_url",
-      "url": "https://github.com/SoundsoftheSun/beekeepingage"
-    }
+    "italic": false
   },
   "body": [
     {
       "type": "minecraft:plain_message",
       "contents": {
         "translate": "book.beekeepingage.body_one",
-        "fallback": "This section has not been translated to your language yet, sorry! Click on the title to view the guide in your browser."
-      }
-    },
-    {
-      "type": "minecraft:plain_message",
-      "contents": {
-        "translate": "book.beekeepingage.body_two",
-        "fallback": "This section has not been translated to your language yet, sorry! Click on the title to view the guide in your browser."
-      }
+        "fallback": "This section has not been translated to your language yet, sorry! View Guidebook.md in the repository."
+      },
+      "width": 400
     }
   ],
-  "inputs": [],
   "can_close_with_escape": true,
   "pause": true,
   "after_action": "close",
@@ -40,5 +29,21 @@
       "fallback": "Close"
     }
   },
-  "dialogs": []
+  "actions": [
+    {
+      "label": {
+        "translate": "book.beekeepingage.open",
+        "fallback": "Open Guidebook.md",
+        "with": [],
+        "type": "translatable",
+        "shadow_color": 0,
+        "bold": true,
+        "italic": false
+      },
+      "action": {
+        "type": "minecraft:open_url",
+        "url": "https://github.com/SoundsoftheSun/Beekeeping-Age/blob/master/Guidebook.md"
+      }
+    }
+  ]
 }

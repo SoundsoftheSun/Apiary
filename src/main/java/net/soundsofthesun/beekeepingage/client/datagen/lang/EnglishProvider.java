@@ -153,28 +153,14 @@ public class EnglishProvider extends FabricLanguageProvider {
         translationBuilder.add("book."+MOD_ID+".title",
                 MOD_NAME);
 
+        translationBuilder.add("book."+MOD_ID+".close",
+                "Close Book");
+
+        translationBuilder.add("book."+MOD_ID+".open",
+                "Open in Browser");
+
         translationBuilder.add("book."+MOD_ID+".body_one",
-                "Guide body one");
-
-        translationBuilder.add("book."+MOD_ID+".body_two",
-                """
-                        Guidebook body two!
-                        Guidebook body two!
-                        Guidebook body two!
-                        Guidebook body two!
-                        Guidebook body two!
-                        Guidebook body two!
-                        Guidebook body two!
-                        Guidebook body two!
-                        Guidebook body two!
-                        Guidebook body two!
-                        Guidebook body two!
-                        Guidebook body two!
-
-                        """
-        );
-
-
+                EnglishGuidebook.getText());
 
     }
 }
