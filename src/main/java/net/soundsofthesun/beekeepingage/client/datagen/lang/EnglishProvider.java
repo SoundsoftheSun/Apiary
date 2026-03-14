@@ -105,6 +105,9 @@ public class EnglishProvider extends FabricLanguageProvider {
         translationBuilder.add("tag.item."+MOD_ID+".repairs_bee_protection",
                 "Repairs Bee Protection");
 
+        translationBuilder.add("tag.item."+MOD_ID+".repairs_hive_tool",
+                "Repairs Hive Tool");
+
 
 
         // Advancements

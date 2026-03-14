@@ -31,6 +31,7 @@ public abstract class BeehiveBlockEntityMixin extends BlockEntity {
     @WrapOperation(method = "setChanged", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/entity/BlockEntity;setChanged()V"))
     void bka$setChanged(BeehiveBlockEntity instance, Operation<Void> original) {
         // Custom setChanged behavior for conversion from AbandonedHive
+
         if (!this.restored.bool() && instance.components().has(ModComponents.BEEHIVE_RESTORED) && instance.components().get(ModComponents.BEEHIVE_RESTORED).bool()) {
             this.restored = new ModComponents.RestoredComponent(true);
         }

@@ -15,15 +15,16 @@ import net.minecraft.world.item.equipment.trim.TrimPattern;
 import net.minecraft.world.level.block.Blocks;
 import net.soundsofthesun.beekeepingage.BKA;
 import net.soundsofthesun.beekeepingage.block.ModBlocks;
+import net.soundsofthesun.beekeepingage.client.datagen.BKAItemTags;
 import net.soundsofthesun.beekeepingage.components.ModComponents;
 
 import java.util.function.Function;
 
 public class ModItems {
 
-    public static final Item HIVE_TOOL = register("hive_tool", HiveToolItem::new, new Item.Properties().durability(212));
+    public static final Item HIVE_TOOL = register("hive_tool", HiveToolItem::new, new Item.Properties().durability(212).repairable(BKAItemTags.REPAIRS_HIVE_TOOL));
 
-    public static final Item VEIL = register("beekeeper_veil", Item::new, new Item.Properties().equippable(EquipmentSlot.HEAD).durability(212).rarity(Rarity.RARE));
+    public static final Item VEIL = register("beekeeper_veil", Item::new, new Item.Properties().equippable(EquipmentSlot.HEAD).durability(212).rarity(Rarity.RARE).repairable(BKAItemTags.REPAIRS_BEE_PROTECTION));
 
     public static final Item MESH = register("mesh", Item::new, new Item.Properties());
 

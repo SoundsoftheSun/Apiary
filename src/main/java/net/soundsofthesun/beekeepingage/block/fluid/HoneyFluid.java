@@ -34,7 +34,7 @@ public abstract class HoneyFluid extends AbstractHoneyFluid {
     public static void entityInHoney(LivingEntity livingEntity) {
         Map<Holder<MobEffect>, MobEffectInstance> effects = livingEntity.getActiveEffectsMap();
         boolean hasEffect = effects.containsKey(ModEffects.HONEY_REGENERATION);
-        if (!hasEffect || effects.get(ModEffects.HONEY_REGENERATION).getDuration() <= ModEffects.regenDuration-20) {
+        if (!hasEffect || effects.get(ModEffects.HONEY_REGENERATION).getDuration() <= ModEffects.regenDuration-20/*This prevents instant healing*/) {
             livingEntity.addEffect(new MobEffectInstance(ModEffects.HONEY_REGENERATION, 100));
         }
     }

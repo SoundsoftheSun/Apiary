@@ -24,14 +24,17 @@ public abstract class LivingEntityMixin extends Entity implements Attackable, Wa
     @WrapOperation(method = "shouldTravelInFluid", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;isInLava()Z"))
     boolean bka$isInHoney(LivingEntity instance, Operation<Boolean> original) {
         // Copy fluid movement behavior from lava
+
         return original.call(instance) || this.updateFluidHeightAndDoFluidPushing(BKAFluidTags.HONEY_TAG, 0.014D);
     }
 
     @WrapOperation(method = "causeFallDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;calculateFallDamage(DF)I"))
     int sun$negateHoneyFallDamage(LivingEntity instance, double fallDistance, float damageMultiplier, Operation<Integer> original) {
         // Negate fall damage when landing in honey in the nether
+
         int og = original.call(instance, fallDistance, damageMultiplier);
         if (og > 0 && this.getInBlockState().is(ModBlocks.HONEY_FLUID_BLOCK) && this.level().dimension() == Level.NETHER) {
+            // Try give advancement if fall was lethal
             if ((((LivingEntity)(Object)this)) instanceof ServerPlayer serverPlayer && serverPlayer.getHealth() - og <= 0) {
                 ModCriteria.HONEY_CLUTCH.trigger(serverPlayer);
             }

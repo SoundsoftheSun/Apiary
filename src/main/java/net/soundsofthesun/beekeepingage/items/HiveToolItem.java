@@ -23,7 +23,7 @@ public class HiveToolItem extends Item {
     }
 
     @Override
-    public @NonNull ItemUseAnimation getUseAnimation(ItemStack stack) {
+    public @NonNull ItemUseAnimation getUseAnimation(@NonNull ItemStack stack) {
         return ItemUseAnimation.BUNDLE;
     }
 }

@@ -14,12 +14,16 @@ public class ModEffects {
     public static final Holder<MobEffect> HONEY_REGENERATION =
             Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, BKA.id("honey_regeneration"), new HoneyRegeneration());
 
-    public static final int stickyDuration = 100;
+    public static final int stickyDuration = 120;
     public static final Holder<MobEffect> HONEY_STICKY =
             Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, BKA.id("honey_sticky"), new HoneySticky()
                     .addAttributeModifier(
                             Attributes.MOVEMENT_SPEED, BKA.id("effect.slowness"),
                             -0.14F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+                    )
+                    .addAttributeModifier(
+                            Attributes.JUMP_STRENGTH, BKA.id("jump.debuff"),
+                            -0.14, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
                     )
             );
 

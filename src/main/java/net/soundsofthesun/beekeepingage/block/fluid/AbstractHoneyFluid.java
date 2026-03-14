@@ -16,8 +16,30 @@ import org.jspecify.annotations.NonNull;
 
 public abstract class AbstractHoneyFluid extends FlowingFluid {
 
+    // Liquid honey can be exploded
+    @Override
+    protected float getExplosionResistance() {
+        return 10.0F;
+    }
+
+    // Faster in nether
     public static boolean isFastLava(LevelReader level) {
         return level.environmentAttributes().getDimensionValue(EnvironmentAttributes.FAST_LAVA);
+    }
+
+    @Override
+    protected int getSlopeFindDistance(@NonNull LevelReader reader) {
+        return isFastLava(reader) ? 2 : 1;
+    }
+
+    @Override
+    protected int getDropOff(@NonNull LevelReader reader) {
+        return isFastLava(reader) ? 1 : 2;
+    }
+
+    @Override
+    public int getTickDelay(@NonNull LevelReader reader) {
+        return isFastLava(reader) ? 20 : 40;
     }
 
     @Override
@@ -36,26 +58,4 @@ public abstract class AbstractHoneyFluid extends FlowingFluid {
         return false;
     }
 
-    @Override
-    protected int getSlopeFindDistance(@NonNull LevelReader reader) {
-        return isFastLava(reader) ? 2 : 1;
-    }
-
-    @Override
-    protected int getDropOff(@NonNull LevelReader reader) {
-        return isFastLava(reader) ? 1 : 2;
-    }
-
-    @Override
-    public int getTickDelay(@NonNull LevelReader reader) {
-        return isFastLava(reader) ? 20 : 40;
-    }
-
-    /**
-     * Water and Lava both return 100.0F.
-     */
-    @Override
-    protected float getExplosionResistance() {
-        return 10.0F;
-    }
 }

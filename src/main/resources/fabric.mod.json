@@ -3,9 +3,11 @@
   "id": "beekeepingage",
   "version": "${version}",
   "name": "Beekeeping Age",
-  "description": "",
-  "authors": [],
-  "contact": {},
+  "description": "Beekeeping Age adds a bunch of new beekeeping-related content. Alpha.",
+  "authors": ["SoundsoftheSun"],
+  "contact": {
+    "homepage": "https://github.com/SoundsoftheSun/Beekeeping-Age"
+  },
   "license": "MIT",
   "icon": "assets/beekeepingage/icon.png",
   "environment": "*",

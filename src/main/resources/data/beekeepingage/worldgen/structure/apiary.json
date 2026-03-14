@@ -1,7 +1,8 @@
 {
   "type": "minecraft:jigsaw",
   "biomes": [
-    "minecraft:flower_forest"
+    "minecraft:flower_forest",
+    "minecraft:meadow"
   ],
     "step": "raw_generation",
   "terrain_adaptation": "beard_thin",

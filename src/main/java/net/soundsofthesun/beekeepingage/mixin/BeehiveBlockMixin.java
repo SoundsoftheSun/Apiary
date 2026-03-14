@@ -28,7 +28,9 @@ public class BeehiveBlockMixin {
     @WrapOperation(method = "useItemOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z", ordinal = 0))
     boolean bka$isHoneyTool(ItemStack instance, Item item, Operation<Boolean> original, @Local(argsOnly = true) Player player) {
         // Add hive tool to harvesters
+
         boolean bl = instance.is(ModItems.HIVE_TOOL);
+        // Try give advancement
         if (player instanceof ServerPlayer serverPlayer && bl) ModCriteria.USE_HIVE_TOOL.trigger(serverPlayer);
         return original.call(instance, item) || bl;
     }
@@ -36,6 +38,7 @@ public class BeehiveBlockMixin {
     @WrapOperation(method = "useItemOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;playSound(Lnet/minecraft/world/entity/Entity;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V"))
     void bka$playHarvestSound(Level instance, Entity entity, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch, Operation<Void> original, @Local(argsOnly = true) ItemStack stack) {
         // Play different sound when using hive tool
+
         boolean usedHiveTool = stack.is(ModItems.HIVE_TOOL);
         original.call(instance, entity, x, y, z, usedHiveTool ? SoundEvents.HONEY_BLOCK_HIT : sound, source, usedHiveTool ? 1.2F : volume, pitch);
     }
@@ -43,7 +46,9 @@ public class BeehiveBlockMixin {
     @WrapOperation(method = "useItemOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/CampfireBlock;isSmokeyPos(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Z"))
     boolean bka$angerBees(Level level, BlockPos pos, Operation<Boolean> original, @Local(argsOnly = true) Player player) {
         // Anger bees if not smokey or wearing beekeeper veil
+
         boolean bl = player.getItemBySlot(EquipmentSlot.HEAD).is(BKAItemTags.BEE_PROTECTION);
+        // Try give advancement
         if (player instanceof ServerPlayer serverPlayer && bl) ModCriteria.HARVEST_WITH_VEIL.trigger(serverPlayer);
         return original.call(level, pos) || bl;
     }
@@ -51,7 +56,9 @@ public class BeehiveBlockMixin {
     @WrapOperation(method = "playerDestroy", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/enchantment/EnchantmentHelper;hasTag(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/tags/TagKey;)Z"))
     boolean bka$isBrokenWithHiveTool(ItemStack stack, TagKey<Enchantment> tag, Operation<Boolean> original, @Local(argsOnly = true) Player player) {
         // Add hive tool check to silk touch check
+
         boolean bl = stack.is(ModItems.HIVE_TOOL);
+        // Try give advancement
         if (player instanceof ServerPlayer serverPlayer && bl) ModCriteria.USE_HIVE_TOOL.trigger(serverPlayer);
         return original.call(stack, tag) || bl;
     }
