@@ -1,0 +1,16 @@
+{
+  "structures": [
+    {
+      "structure": "beekeepingage:apiary",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 100,
+    "separation": 1,
+    "salt": 0,
+    "frequency_reduction_method": "default",
+    "frequency": 1
+  }
+}
