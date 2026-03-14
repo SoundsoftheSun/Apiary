@@ -20,14 +20,9 @@ After using the honey extractor and drip pan, the drip pan should be filled with
 There have been several changes to beekeeping. Instead of shears, the new Hive Tool is now the preferred tool for your beekeeping needs. Harvesting honeycomb with the Hive Tool will grant you bonus honeycomb, and breaking beehives with the Hive Tool will maintain their properties, as an alternative to using silk touch. Additionally, while you can still use campfires to pacify your bees before harvesting, beehives that are smokey will not produce more honey, so you will have to extinguish or obstruct your campfires when not harvesting. Alternatively, you can equip the new Beekeeping Veil to prevent bees from attacking you while you harvest and protect you from disgruntled bees. 
 
 
-# Apiary (WIP)
+# Apiary
 
-While exploring your world. You may encounter the Apiary, a new structure found in Flower Forests. Here you will meet the new Beekeeper Villager, and find some of the new blocks and items. Be warned, the beehives you find here will not drop anything!
-
-
-# Abandoned Apiary (WIP)
-
-Much like the Apiary, here you will find new blocks and items, though the villager has been zombified, and the beehives have been abandoned. Restore the abandoned beehives with honeycomb for increased honey production, and heal the zombie villager for improved trading prices! Be careful to harvest restored beehives with the right tool!
+While exploring your world. You may encounter the Apiary, a new structure found in Flower Forests. Here you will meet the new Beekeeper Villager, and find some of the new blocks and items. You may also encounter the Abandoned Apiary, where the beehives have been abandoned and the beekeeper has been zombified. Restore the abandoned beehives with honeycomb for increased honey production, and heal the zombie villager for improved trading prices! Be careful to harvest restored beehives with the right tool!
 
 
 # Bonus

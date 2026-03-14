@@ -31,11 +31,9 @@
     - [x] Icon (placeholder)
       - [x] Exclusive with Regeneration effect
       - [x] Icon (placeholder)
-- Apiary (Custom generated structure)
-  - Generates in flower biomes
-  - Beehives do not drop anything
-    - Always honey level 5
-  - Abandoned Apiary
+- Apiary Structure
+  - [x] Generates in flower biomes
+  - [x] Abandoned Apiary
     - Contains abandoned beehives
     - Zombie villager
 - Equippable beekeeper veil
@@ -43,10 +41,11 @@
   - [x] Reduce damage from angry bees
 - Guidebook + Armor Trim combo
   - [x] Striped beekeeper armor trim
-  - [ ] Tutorial guidebook
+  - [x] Tutorial guidebook
 - Honeycomb Block family
-  - Slabs, stairs, wall
-  - Honeycomb block added to pickaxe block tags
+  - [x] Slabs, stairs, wall
+  - [x] Honeycomb block added to pickaxe block tags
+- Flower golem?
 
 # Advancements
 - Beginner
@@ -67,15 +66,6 @@
 
 # New Gameplay mechanics (tentative)
 - [x] Smoked-out beehives will NOT produce honey
-- Revitalization mechanic
-  - Ghost Bees
-  - [x] Abandoned Beehives
-  - Abandoned beekeeper grounds
-  - Players find abandoned structure
-    - [x] repair abandoned beehives with honeycomb
-    - ghost bees turn to normal bees again
-    - [x] increased rates
-    - better trades from villager
 - Beehive upgrades?
 
 # Crafting Items
