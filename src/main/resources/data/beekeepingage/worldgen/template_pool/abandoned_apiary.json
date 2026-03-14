@@ -1,0 +1,16 @@
+{
+  "name": "beekeepingage:abandoned_apiary",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "projection": "rigid",
+        "location": "beekeepingage:abandoned_apiary",
+        "processors": [],
+        "override_liquid_settings": "ignore_waterlogging"
+      }
+    }
+  ]
+}
