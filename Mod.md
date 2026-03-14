@@ -53,6 +53,8 @@
     - Obtain honeycomb
   - "Mutualism"
     - Craft a beehive
+  - "Save the Bees!"
+    - Restore an Abandoned Hive
 - Intermediate
   - "Worker Bee"
     - Obtain and use a hive tool

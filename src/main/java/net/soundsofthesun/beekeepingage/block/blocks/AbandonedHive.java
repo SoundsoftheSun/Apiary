@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
+import net.soundsofthesun.beekeepingage.advancement.ModCriteria;
 import net.soundsofthesun.beekeepingage.components.ModComponents;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -37,13 +39,13 @@ public class AbandonedHive extends HorizontalDirectionalBlock {
         if (stack.is(Items.HONEYCOMB)) {
             if (!player.hasInfiniteMaterials()) stack.shrink(1);
 
-            level.setBlockAndUpdate(pos, Blocks.BEEHIVE.defaultBlockState().setValue(FACING, state.getValue(FACING)));
-            if (level.getBlockEntity(pos) instanceof BeehiveBlockEntity be) {
+            if (level.setBlockAndUpdate(pos, Blocks.BEEHIVE.defaultBlockState().setValue(FACING, state.getValue(FACING))) && level.getBlockEntity(pos) instanceof BeehiveBlockEntity be) {
                 be.setComponents(DataComponentMap.builder()
                     .addAll(be.components())
                     .set(ModComponents.BEEHIVE_RESTORED, new ModComponents.RestoredComponent(true))
                     .build());
                 be.setChanged();
+                if (player instanceof ServerPlayer serverPlayer) ModCriteria.RESTORE_HIVE.trigger(serverPlayer);
             }
 
             level.playSound(null, pos.getX()+0.5F, pos.getY()+0.5F, pos.getZ()+0.5F, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1F, 1F);

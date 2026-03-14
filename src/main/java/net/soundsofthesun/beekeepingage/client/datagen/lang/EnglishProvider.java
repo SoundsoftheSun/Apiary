@@ -125,6 +125,14 @@ public class EnglishProvider extends FabricLanguageProvider {
 
 
 
+        translationBuilder.add(MOD_ID+".advancement.restore_hive",
+                "Save the Bees!");
+
+        translationBuilder.add(MOD_ID+".advancement.restore_hive.description",
+                "Restore an abandoned beehive!");
+
+
+
         translationBuilder.add(MOD_ID+".advancement.use_hive_tool",
                 "Worker Bee");
 

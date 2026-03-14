@@ -8,6 +8,7 @@ public class ModCriteria {
     public static final UseHiveToolCriterion USE_HIVE_TOOL = CriteriaTriggers.register(BKA.MOD_ID + ":use_hive_tool", new UseHiveToolCriterion());
     public static final HarvestWithVeilCriterion HARVEST_WITH_VEIL = CriteriaTriggers.register(BKA.MOD_ID + ":harvest_veil", new HarvestWithVeilCriterion());
     public static final HoneyBucketClutchCriterion HONEY_CLUTCH = CriteriaTriggers.register(BKA.MOD_ID + ":honey_clutch", new HoneyBucketClutchCriterion());
+    public static final RestoreHiveCriterion RESTORE_HIVE = CriteriaTriggers.register(BKA.MOD_ID + ":restore_hive", new RestoreHiveCriterion());
 
     public static void init() {}
 }

@@ -58,6 +58,21 @@ public class BKAAdvancements extends FabricAdvancementProvider {
                 .addCriterion("get_beehive", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BEEHIVE))
                 .save(consumer, BKA.MOD_ID + ":get_beehive");
 
+        AdvancementHolder restore = Advancement.Builder.advancement()
+                .parent(mutualism)
+                .display(
+                        ModBlocks.ABANDONED_BEEHIVE,
+                        Component.translatable(MOD_ID+".advancement.restore_hive"),
+                        Component.translatable(MOD_ID+".advancement.restore_hive.description"),
+                        null,
+                        AdvancementType.TASK,
+                        true, // Show toast
+                        true, // Announce
+                        false // Hide until achieved
+                )
+                .addCriterion("restore_hive", ModCriteria.RESTORE_HIVE.createCriterion(new RestoreHiveCriterion.Conditions(Optional.empty())))
+                .save(consumer, BKA.MOD_ID + ":restore_hive");
+
         AdvancementHolder workerBee = Advancement.Builder.advancement()
                 .parent(mutualism)
                 .display(
