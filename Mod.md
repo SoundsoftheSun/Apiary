@@ -44,7 +44,11 @@
   - [x] Tutorial guidebook
 - Honeycomb Block family
   - [x] Slabs, stairs, wall
+  - Add a door perhaps?
   - [x] Honeycomb block added to pickaxe block tags
+- Bee-nest-like building block
+  - Planks+comb
+  - Basically wood clone but looks like bee nest
 - Flower golem?
 
 # Advancements
