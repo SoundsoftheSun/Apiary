@@ -1,8 +1,8 @@
 package net.soundsofthesun.beekeepingage.entity.flowergolem;
 
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -30,20 +30,6 @@ public class FlowerGolem extends PathfinderMob {
 
     private boolean doPickAnim = true;
 
-    private ItemStack holding = ItemStack.EMPTY;
-
-    public boolean isHoldingFlower() {
-        return this.holding.is(ItemTags.FLOWERS);
-    }
-
-    public void setHolding(ItemStack stack) {
-        if (!this.isHoldingFlower() && stack.is(ItemTags.FLOWERS)) {
-            this.holding = stack;
-            System.out.println("found flower: "+this.holding.getItemName());
-            this.setState(FlowerGolemState.OFFER);
-        }
-    }
-
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
@@ -66,12 +52,14 @@ public class FlowerGolem extends PathfinderMob {
 
         if (this.level().isClientSide()) {
 
-            if (this.doPickAnim && this.getState() == FlowerGolemState.OFFER) {
-                this.offerAnimationState.start(this.tickCount);
-                this.doPickAnim = false;
-            }
+            switch (this.getState()) {
+                case IDLE -> doIdleAnimation();
+                case OFFER -> {if (this.doPickAnim) {
+                    this.offerAnimationState.start(this.tickCount);
+                    this.doPickAnim = false;
+                }}
 
-            doIdleAnimation();
+            }
         }
     }
 
@@ -87,6 +75,10 @@ public class FlowerGolem extends PathfinderMob {
             FlowerGolem.class, ModEntities.FLOWER_GOLEM_STATE
     );
 
+    private static final EntityDataAccessor<ItemStack> HELD_ITEM = SynchedEntityData.defineId(
+            FlowerGolem.class, EntityDataSerializers.ITEM_STACK
+    );
+
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, 0.2F).add(Attributes.STEP_HEIGHT, 1.0).add(Attributes.MAX_HEALTH, 12.0);
     }
@@ -95,6 +87,15 @@ public class FlowerGolem extends PathfinderMob {
     protected void defineSynchedData(SynchedEntityData.@NonNull Builder builder) {
         super.defineSynchedData(builder);
         builder.define(FLOWER_GOLEM_STATE, FlowerGolemState.IDLE);
+        builder.define(HELD_ITEM, ItemStack.EMPTY);
+    }
+
+    public ItemStack getHeldFlower() {
+        return this.entityData.get(HELD_ITEM);
+    }
+
+    public void setHeldFlower(ItemStack stack) {
+        this.entityData.set(HELD_ITEM, stack);
     }
 
     public FlowerGolemState getState() {
@@ -102,7 +103,7 @@ public class FlowerGolem extends PathfinderMob {
     }
 
     public void setState(FlowerGolemState state) {
-        this.entityData.set(FLOWER_GOLEM_STATE, state, true);
+        this.entityData.set(FLOWER_GOLEM_STATE, state);
     }
 
 }

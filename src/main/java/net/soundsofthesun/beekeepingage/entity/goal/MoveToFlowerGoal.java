@@ -4,8 +4,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelReader;
 import net.soundsofthesun.beekeepingage.entity.flowergolem.FlowerGolem;
+import net.soundsofthesun.beekeepingage.entity.flowergolem.FlowerGolemState;
 
 import java.util.EnumSet;
 
@@ -35,7 +37,7 @@ public class MoveToFlowerGoal extends Goal {
 
     @Override
     public boolean canUse() {
-        if (this.golem.isHoldingFlower()) return false;
+        if (this.golem.getHeldFlower() != ItemStack.EMPTY) return false;
         if (this.nextStartTick > 0) {
             this.nextStartTick--;
             return false;
@@ -90,8 +92,9 @@ public class MoveToFlowerGoal extends Goal {
             }
         } else {
             this.reachedTarget = true;
-            if (!this.golem.isHoldingFlower()) {
-                this.golem.setHolding(this.golem.level().getBlockState(this.blockPos).getBlock().asItem().getDefaultInstance());
+            if (this.golem.getHeldFlower() == ItemStack.EMPTY) {
+                this.golem.setHeldFlower(this.golem.level().getBlockState(this.blockPos).getBlock().asItem().getDefaultInstance());
+                this.golem.setState(FlowerGolemState.OFFER);
             }
             this.tryTicks--;
         }
