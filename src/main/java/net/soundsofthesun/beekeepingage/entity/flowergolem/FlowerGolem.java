@@ -8,6 +8,8 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.soundsofthesun.beekeepingage.entity.ModEntities;
@@ -22,6 +24,34 @@ public class FlowerGolem extends PathfinderMob {
         this.setPathfindingMalus(PathType.DANGER_OTHER, 16.0F);
         this.setPathfindingMalus(PathType.DAMAGE_FIRE, -1.0F);
     }
+
+    @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new MoveToFlowerGoal(this, 1, 16));
+        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+    }
+
+    private void handleAnimations() {
+        if (this.idleAnimTime < this.maxIdleAnimTime) {
+            this.idleAnimTime++;
+        } else {
+            this.idleAnimTime = 0;
+            this.rotateAnimationState.start(this.tickCount);
+        }
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (this.level().isClientSide()) {
+            handleAnimations();
+        }
+    }
+
+    private int idleAnimTime = 0;
+    private int maxIdleAnimTime = 200;
 
     public final AnimationState walkAnimationState = new AnimationState();
     public final AnimationState rotateAnimationState = new AnimationState();

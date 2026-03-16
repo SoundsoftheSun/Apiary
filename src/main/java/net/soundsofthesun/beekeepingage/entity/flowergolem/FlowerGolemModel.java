@@ -1,5 +1,6 @@
 package net.soundsofthesun.beekeepingage.entity.flowergolem;
 
+import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -17,6 +18,11 @@ public class FlowerGolemModel extends EntityModel<FlowerGolemRenderState> {
     private final ModelPart left_leg;
     private final ModelPart right_leg;
 
+    private final KeyframeAnimation walkAnimation;
+    private final KeyframeAnimation rotateAnimation;
+    private final KeyframeAnimation shakeAnimation;
+    private final KeyframeAnimation offerAnimation;
+
     public FlowerGolemModel(ModelPart root) {
         super(root);
         this.head = root.getChild("head");
@@ -25,6 +31,11 @@ public class FlowerGolemModel extends EntityModel<FlowerGolemRenderState> {
         this.right_arm = root.getChild("right_arm");
         this.left_leg = root.getChild("left_leg");
         this.right_leg = root.getChild("right_leg");
+
+        this.walkAnimation = FlowerGolemAnimations.walk.bake(root);
+        this.rotateAnimation = FlowerGolemAnimations.rotate.bake(root);
+        this.shakeAnimation = FlowerGolemAnimations.shake.bake(root);
+        this.offerAnimation = FlowerGolemAnimations.offer.bake(root);
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -53,6 +64,8 @@ public class FlowerGolemModel extends EntityModel<FlowerGolemRenderState> {
         super.setupAnim(renderState);
         this.applyHeadRotation(renderState, renderState.yRot, renderState.xRot);
 
+        this.walkAnimation.applyWalk(renderState.walkAnimationPos, renderState.walkAnimationSpeed, 1F, 1F);
+        this.rotateAnimation.apply(renderState.rotateAnimationState, renderState.ageInTicks, 1F);
     }
 
     private void applyHeadRotation(FlowerGolemRenderState renderState, float yRot, float xRot) {
