@@ -9,10 +9,4 @@ consider way to turn honey bottle/block to liquid honey?
 
 honey extractor spawns in wrong direction in apiary structure sometimes??
 
-maybe should nerf honey block fall damage reduction? you can literally survive a fall from 100 blocks up with no armor lol
-
 breaking with hive tool doesnt damage tool
-
-entity movement speed in liquid honey should be faster in nether
-
-sticky debuff should be less in nether/more in overworld maybe?

@@ -6,6 +6,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import org.jspecify.annotations.NonNull;
 
 public class HoneyRegeneration extends MobEffect {
@@ -33,7 +34,8 @@ public class HoneyRegeneration extends MobEffect {
 
     @Override
     public void onEffectRemoved(@NonNull MobEffectInstance effectInstance, LivingEntity entity) {
-        entity.addEffect(new MobEffectInstance(ModEffects.HONEY_STICKY, ModEffects.stickyDuration));
+        // Sticky duration is shorter in Nether
+        entity.addEffect(new MobEffectInstance(ModEffects.HONEY_STICKY, entity.level().dimension() == Level.NETHER ? ModEffects.stickyDuration : ModEffects.stickyDuration*2));
         super.onEffectRemoved(effectInstance, entity);
     }
 }

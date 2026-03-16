@@ -32,8 +32,11 @@ public abstract class BeehiveBlockEntityMixin extends BlockEntity {
     void bka$setChanged(BeehiveBlockEntity instance, Operation<Void> original) {
         // Custom setChanged behavior for conversion from AbandonedHive
 
-        if (!this.restored.bool() && instance.components().has(ModComponents.BEEHIVE_RESTORED) && instance.components().get(ModComponents.BEEHIVE_RESTORED).bool()) {
-            this.restored = new ModComponents.RestoredComponent(true);
+        if (!this.restored.bool() && instance.components().has(ModComponents.BEEHIVE_RESTORED)) {
+            ModComponents.RestoredComponent restoredComponent = instance.components().get(ModComponents.BEEHIVE_RESTORED);
+            if (restoredComponent != null) {
+                this.restored = restoredComponent;
+            }
         }
         original.call(instance);
     }
@@ -54,7 +57,7 @@ public abstract class BeehiveBlockEntityMixin extends BlockEntity {
     @WrapOperation(method = "loadAdditional", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/entity/BlockEntity;loadAdditional(Lnet/minecraft/world/level/storage/ValueInput;)V"))
     void bka$loadAdditional(BeehiveBlockEntity instance, ValueInput input, Operation<Void> original) {
         original.call(instance, input);
-        this.restored = input.read("restored", ModComponents.RestoredComponent.CODEC).orElse(null);
+        this.restored = input.read("restored", ModComponents.RestoredComponent.CODEC).orElse(ModComponents.RestoredComponent.DEFAULT);
     }
 
     @WrapOperation(method = "saveAdditional", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/entity/BlockEntity;saveAdditional(Lnet/minecraft/world/level/storage/ValueOutput;)V"))

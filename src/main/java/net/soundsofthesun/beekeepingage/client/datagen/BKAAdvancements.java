@@ -59,7 +59,7 @@ public class BKAAdvancements extends FabricAdvancementProvider {
                 .save(consumer, BKA.MOD_ID + ":get_beehive");
 
         AdvancementHolder restore = Advancement.Builder.advancement()
-                .parent(mutualism)
+                .parent(beginning)
                 .display(
                         ModBlocks.ABANDONED_BEEHIVE,
                         Component.translatable(MOD_ID+".advancement.restore_hive"),
@@ -74,7 +74,7 @@ public class BKAAdvancements extends FabricAdvancementProvider {
                 .save(consumer, BKA.MOD_ID + ":restore_hive");
 
         AdvancementHolder workerBee = Advancement.Builder.advancement()
-                .parent(mutualism)
+                .parent(beginning)
                 .display(
                         ModItems.HIVE_TOOL,
                         Component.translatable(MOD_ID+".advancement.use_hive_tool"),
@@ -104,7 +104,7 @@ public class BKAAdvancements extends FabricAdvancementProvider {
                 .save(consumer, BKA.MOD_ID + ":harvest_veil");
 
         AdvancementHolder extractor = Advancement.Builder.advancement()
-                .parent(workerBee)
+                .parent(beginning)
                 .display(
                         ModBlocks.HONEY_EXTRACTOR.asItem(),
                         Component.translatable(MOD_ID+".advancement.use_extractor"),

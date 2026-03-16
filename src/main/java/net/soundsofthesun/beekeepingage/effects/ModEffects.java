@@ -12,17 +12,26 @@ public class ModEffects {
 
     public static final int regenDuration = 100;
     public static final Holder<MobEffect> HONEY_REGENERATION =
-            Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, BKA.id("honey_regeneration"), new HoneyRegeneration());
+            Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, BKA.id("honey_regeneration"), new HoneyRegeneration()
+                    .addAttributeModifier(
+                            Attributes.MOVEMENT_SPEED, BKA.id("honey_regeneration.slowness"),
+                            -0.10F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+                    )
+                    .addAttributeModifier(
+                            Attributes.JUMP_STRENGTH, BKA.id("honey_regeneration.jump_debuff"),
+                            -0.10, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+                    )
+            );
 
-    public static final int stickyDuration = 120;
+    public static final int stickyDuration = 80;
     public static final Holder<MobEffect> HONEY_STICKY =
             Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, BKA.id("honey_sticky"), new HoneySticky()
                     .addAttributeModifier(
-                            Attributes.MOVEMENT_SPEED, BKA.id("effect.slowness"),
+                            Attributes.MOVEMENT_SPEED, BKA.id("honey_sticky.slowness"),
                             -0.14F, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
                     )
                     .addAttributeModifier(
-                            Attributes.JUMP_STRENGTH, BKA.id("jump.debuff"),
+                            Attributes.JUMP_STRENGTH, BKA.id("honey_sticky.jump_debuff"),
                             -0.14, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
                     )
             );
