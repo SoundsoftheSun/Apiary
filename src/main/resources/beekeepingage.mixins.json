@@ -8,6 +8,7 @@
     "BeehiveBlockMixin",
     "BeeMixin",
     "BucketItemMixin",
+    "CarvedPumpkinBlockMixin",
     "LivingEntityMixin",
     "SmithingTemplateItemMixin"
   ],
