@@ -2,6 +2,7 @@ package net.soundsofthesun.beekeepingage.entity.flowergolem;
 
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -10,9 +11,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.soundsofthesun.beekeepingage.entity.ModEntities;
+import net.soundsofthesun.beekeepingage.entity.goal.MoveToFlowerGoal;
 import org.jspecify.annotations.NonNull;
 
 public class FlowerGolem extends PathfinderMob {
@@ -25,14 +28,30 @@ public class FlowerGolem extends PathfinderMob {
         this.setPathfindingMalus(PathType.DAMAGE_FIRE, -1.0F);
     }
 
+    private boolean doPickAnim = true;
+
+    private ItemStack holding = ItemStack.EMPTY;
+
+    public boolean isHoldingFlower() {
+        return this.holding.is(ItemTags.FLOWERS);
+    }
+
+    public void setHolding(ItemStack stack) {
+        if (!this.isHoldingFlower() && stack.is(ItemTags.FLOWERS)) {
+            this.holding = stack;
+            System.out.println("found flower: "+this.holding.getItemName());
+            this.setState(FlowerGolemState.OFFER);
+        }
+    }
+
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new MoveToFlowerGoal(this, 1, 16));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(1, new MoveToFlowerGoal(this, 1.5F, 16, 10));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
     }
 
-    private void handleAnimations() {
+    private void doIdleAnimation() {
         if (this.idleAnimTime < this.maxIdleAnimTime) {
             this.idleAnimTime++;
         } else {
@@ -46,7 +65,13 @@ public class FlowerGolem extends PathfinderMob {
         super.tick();
 
         if (this.level().isClientSide()) {
-            handleAnimations();
+
+            if (this.doPickAnim && this.getState() == FlowerGolemState.OFFER) {
+                this.offerAnimationState.start(this.tickCount);
+                this.doPickAnim = false;
+            }
+
+            doIdleAnimation();
         }
     }
 
@@ -77,7 +102,7 @@ public class FlowerGolem extends PathfinderMob {
     }
 
     public void setState(FlowerGolemState state) {
-        this.entityData.set(FLOWER_GOLEM_STATE, state);
+        this.entityData.set(FLOWER_GOLEM_STATE, state, true);
     }
 
 }

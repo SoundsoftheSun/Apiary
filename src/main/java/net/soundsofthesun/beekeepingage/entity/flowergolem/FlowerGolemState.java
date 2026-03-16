@@ -11,8 +11,8 @@ import org.jspecify.annotations.NonNull;
 import java.util.function.IntFunction;
 
 public enum FlowerGolemState implements StringRepresentable {
-    IDLE("idle", 0),
-    ROTATE("rotate", 1),
+    NONE("none", 0),
+    IDLE("idle", 1),
     SHAKE("shake", 2),
     OFFER("offer", 3);
 
@@ -22,7 +22,7 @@ public enum FlowerGolemState implements StringRepresentable {
     private final String name;
     private final int id;
 
-    private FlowerGolemState(final String name, final int id) {
+    FlowerGolemState(final String name, final int id) {
         this.name = name;
         this.id = id;
     }

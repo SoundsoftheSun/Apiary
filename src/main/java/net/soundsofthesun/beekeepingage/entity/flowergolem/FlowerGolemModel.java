@@ -66,6 +66,8 @@ public class FlowerGolemModel extends EntityModel<FlowerGolemRenderState> {
 
         this.walkAnimation.applyWalk(renderState.walkAnimationPos, renderState.walkAnimationSpeed, 1F, 1F);
         this.rotateAnimation.apply(renderState.rotateAnimationState, renderState.ageInTicks, 1F);
+        this.shakeAnimation.apply(renderState.shakeAnimationState, renderState.ageInTicks, 1F);
+        this.offerAnimation.apply(renderState.offerAnimationState, renderState.ageInTicks, 1F);
     }
 
     private void applyHeadRotation(FlowerGolemRenderState renderState, float yRot, float xRot) {
