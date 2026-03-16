@@ -7,6 +7,7 @@ import net.soundsofthesun.beekeepingage.block.ModBlockEntities;
 import net.soundsofthesun.beekeepingage.block.ModBlocks;
 import net.soundsofthesun.beekeepingage.components.ModComponents;
 import net.soundsofthesun.beekeepingage.effects.ModEffects;
+import net.soundsofthesun.beekeepingage.entity.ModEntities;
 import net.soundsofthesun.beekeepingage.entity.ModVillagers;
 import net.soundsofthesun.beekeepingage.items.ModItems;
 
@@ -25,6 +26,7 @@ public class BKA implements ModInitializer {
         ModBlocks.init();
         ModBlockEntities.init();
         ModItems.init();
+        ModEntities.init();
         ModVillagers.init();
         ModEffects.init();
         ModCriteria.init();
