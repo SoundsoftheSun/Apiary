@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.level.block.Blocks;
 import net.soundsofthesun.beekeepingage.BKA;
 import net.soundsofthesun.beekeepingage.block.ModBlocks;
 import net.soundsofthesun.beekeepingage.items.ModItems;
@@ -26,7 +27,7 @@ public class ModVillagers {
 
     public static void init() {
         PointOfInterestHelper.register(BKA.id("beekeeper_poi"),1, 1, ModBlocks.HONEY_EXTRACTOR);
-        Registry.register(BuiltInRegistries.VILLAGER_PROFESSION, BEEKEEPER, new VillagerProfession(Component.translatable(BKA.MOD_ID+".villager.beekeeper"), entry -> entry.is(BEEKEEPER_POI), entry -> entry.is(BEEKEEPER_POI), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.BEE_POLLINATE));
+        Registry.register(BuiltInRegistries.VILLAGER_PROFESSION, BEEKEEPER, new VillagerProfession(Component.translatable(BKA.MOD_ID+".villager.beekeeper"), entry -> entry.is(BEEKEEPER_POI), entry -> entry.is(BEEKEEPER_POI), ImmutableSet.of(Items.HONEYCOMB), ImmutableSet.of(Blocks.BEEHIVE, Blocks.BEE_NEST), SoundEvents.BEE_POLLINATE));
 
         // Level 1
         TradeOfferHelper.registerVillagerOffers(BEEKEEPER, 1, factories -> {
