@@ -28,6 +28,8 @@ public class ModItems {
 
     public static final Item MESH = register("mesh", Item::new, new Item.Properties());
 
+    // public static final Item FLOWER_GOLEM_SPAWN_EGG = register("flower_golem_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(ModEntities.FLOWER_GOLEM));
+
     public static final ResourceKey<TrimPattern> SMITHING_BEEKEEPER_PATTERN = ResourceKey.create(Registries.TRIM_PATTERN, BKA.id("beekeeper_pattern"));
     public static final Item BEEKEEPER_SMITHING_TEMPLATE = register("beekeeper_smithing_template", SmithingTemplateItem::createArmorTrimTemplate, new Item.Properties().rarity(Rarity.UNCOMMON));
 

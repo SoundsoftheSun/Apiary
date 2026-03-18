@@ -3,6 +3,7 @@ package net.soundsofthesun.beekeepingage.entity.flowergolem;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -33,7 +35,11 @@ public class FlowerGolem extends PathfinderMob {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
+
         this.goalSelector.addGoal(1, new MoveToFlowerGoal(this, 1.5F, 16, 10));
+
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, itemStack -> itemStack.is(ItemTags.BEE_FOOD), false));
+
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
     }
 
@@ -64,7 +70,7 @@ public class FlowerGolem extends PathfinderMob {
     }
 
     private int idleAnimTime = 0;
-    private int maxIdleAnimTime = 200;
+    private int maxIdleAnimTime = 400;
 
     public final AnimationState walkAnimationState = new AnimationState();
     public final AnimationState rotateAnimationState = new AnimationState();
@@ -80,7 +86,12 @@ public class FlowerGolem extends PathfinderMob {
     );
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MOVEMENT_SPEED, 0.2F).add(Attributes.STEP_HEIGHT, 1.0).add(Attributes.MAX_HEALTH, 12.0);
+        return Mob.createMobAttributes()
+                .add(Attributes.MOVEMENT_SPEED, 0.2F)
+                .add(Attributes.STEP_HEIGHT, 1.0)
+                .add(Attributes.MAX_HEALTH, 12.0)
+                .add(Attributes.TEMPT_RANGE, 10.0)
+                ;
     }
 
     @Override

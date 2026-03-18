@@ -10,13 +10,12 @@ import org.jspecify.annotations.NonNull;
 
 public class FlowerGolemRenderer extends LivingEntityRenderer<FlowerGolem, FlowerGolemRenderState, FlowerGolemModel> {
     public FlowerGolemRenderer(EntityRendererProvider.Context context) {
-        super(context, new FlowerGolemModel(context.bakeLayer(FlowerGolemModel.LAYER_LOCATION)), 1F);
+        super(context, new FlowerGolemModel(context.bakeLayer(FlowerGolemModel.LAYER_LOCATION)), 0.5F);
         itemModel = context.getItemModelResolver();
         this.addLayer(new FlowerGolemHeldItemRenderer(this));
     }
 
     private final ItemModelResolver itemModel;
-
 
     @Override
     public @NonNull Identifier getTextureLocation(FlowerGolemRenderState renderState) {
@@ -36,5 +35,10 @@ public class FlowerGolemRenderer extends LivingEntityRenderer<FlowerGolem, Flowe
         state.rotateAnimationState.copyFrom(golem.rotateAnimationState);
         state.walkAnimationState.copyFrom(golem.walkAnimationState);
         itemModel.updateForLiving(state.itemRenderState, golem.getHeldFlower(), ItemDisplayContext.FIXED, golem);
+    }
+
+    @Override
+    protected boolean shouldShowName(FlowerGolem livingEntity, double d) {
+        return false;
     }
 }

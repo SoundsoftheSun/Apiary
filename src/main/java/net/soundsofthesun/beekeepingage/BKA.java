@@ -7,7 +7,6 @@ import net.soundsofthesun.beekeepingage.block.ModBlockEntities;
 import net.soundsofthesun.beekeepingage.block.ModBlocks;
 import net.soundsofthesun.beekeepingage.components.ModComponents;
 import net.soundsofthesun.beekeepingage.effects.ModEffects;
-import net.soundsofthesun.beekeepingage.entity.ModEntities;
 import net.soundsofthesun.beekeepingage.entity.ModVillagers;
 import net.soundsofthesun.beekeepingage.items.ModItems;
 
@@ -26,7 +25,8 @@ public class BKA implements ModInitializer {
         ModBlocks.init();
         ModBlockEntities.init();
         ModItems.init();
-        ModEntities.init();
+        // Not adding the flower golem until i can think of a good reason for it to exist lol
+        // ModEntities.init();
         ModVillagers.init();
         ModEffects.init();
         ModCriteria.init();

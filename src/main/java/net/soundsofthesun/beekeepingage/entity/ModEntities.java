@@ -20,7 +20,7 @@ public class ModEntities {
     public static final EntityType<FlowerGolem> FLOWER_GOLEM = Registry.register(BuiltInRegistries.ENTITY_TYPE,
             BKA.id("flower_golem"),
             EntityType.Builder.of(FlowerGolem::new, MobCategory.CREATURE)
-                    .sized(1f, 1f).build(FLOWER_GOLEM_KEY));
+                    .sized(0.85f, 1.4f).build(FLOWER_GOLEM_KEY));
 
     public static final EntityDataSerializer<FlowerGolemState> FLOWER_GOLEM_STATE = EntityDataSerializer.forValueType(FlowerGolemState.STREAM_CODEC);
 

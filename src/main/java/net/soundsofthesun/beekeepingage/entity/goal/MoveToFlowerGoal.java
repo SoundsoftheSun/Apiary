@@ -37,6 +37,7 @@ public class MoveToFlowerGoal extends Goal {
 
     @Override
     public boolean canUse() {
+        if (this.golem.getState() == FlowerGolemState.WAIT) return false;
         if (this.golem.getHeldFlower() != ItemStack.EMPTY) return false;
         if (this.nextStartTick > 0) {
             this.nextStartTick--;
