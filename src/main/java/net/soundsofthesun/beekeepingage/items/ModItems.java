@@ -33,7 +33,7 @@ public class ModItems {
     public static final ResourceKey<TrimPattern> SMITHING_BEEKEEPER_PATTERN = ResourceKey.create(Registries.TRIM_PATTERN, BKA.id("beekeeper_pattern"));
     public static final Item BEEKEEPER_SMITHING_TEMPLATE = register("beekeeper_smithing_template", SmithingTemplateItem::createArmorTrimTemplate, new Item.Properties().rarity(Rarity.UNCOMMON));
 
-    public static final Item HONEY_BUCKET = register("honey_bucket", properties -> new BucketItem(ModBlocks.HONEY_SOURCE, properties), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1));
+    public static final Item HONEY_BUCKET = register("honey_bucket", HoneyBucketItem::new, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1));
 
     public static final CreativeModeTab.DisplayItemsGenerator TAB_ITEMS = (params, output) -> {
         output.accept(ModBlocks.HONEY_EXTRACTOR);

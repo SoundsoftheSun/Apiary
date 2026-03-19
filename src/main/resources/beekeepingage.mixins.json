@@ -8,9 +8,10 @@
     "BeehiveBlockMixin",
     "BeeMixin",
     "BucketItemMixin",
-    "CarvedPumpkinBlockMixin",
+    "LayeredCauldronBlockMixin",
     "LivingEntityMixin",
-    "SmithingTemplateItemMixin"
+    "SmithingTemplateItemMixin",
+    "WaterFluidMixin"
   ],
   "client": [
     "VillagerProfessionLayerMixin"

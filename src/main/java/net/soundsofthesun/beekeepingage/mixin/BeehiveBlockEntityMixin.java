@@ -32,7 +32,7 @@ public abstract class BeehiveBlockEntityMixin extends BlockEntity {
     void bka$setChanged(BeehiveBlockEntity instance, Operation<Void> original) {
         // Custom setChanged behavior for conversion from AbandonedHive
 
-        if (!this.restored.bool() && instance.components().has(ModComponents.BEEHIVE_RESTORED)) {
+        if (!this.restored.bool()) {
             ModComponents.RestoredComponent restoredComponent = instance.components().get(ModComponents.BEEHIVE_RESTORED);
             if (restoredComponent != null) {
                 this.restored = restoredComponent;
