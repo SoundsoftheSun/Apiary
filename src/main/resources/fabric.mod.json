@@ -3,7 +3,7 @@
   "id": "beekeepingage",
   "version": "${version}",
   "name": "Beekeeping Age",
-  "description": "Beekeeping Age adds a bunch of new beekeeping-related content. Alpha.",
+  "description": "Beekeeping Age adds a bunch of new beekeeping-related content.",
   "authors": ["SoundsoftheSun"],
   "contact": {
     "homepage": "https://github.com/SoundsoftheSun/Beekeeping-Age"

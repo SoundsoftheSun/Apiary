@@ -49,7 +49,9 @@
 - Bee-nest-like building block
   - Planks+comb
   - Basically wood clone but looks like bee nest
+  - Honey oak??? richer darker version of oak wood?
 - Flower golem?
+  - Partially implemented, cant think of a good reason to have it yet
 
 # Advancements
 - Beginner
