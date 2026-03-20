@@ -3,6 +3,8 @@ package net.soundsofthesun.beekeepingage.mixin;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -43,6 +45,7 @@ public abstract class BucketItemMixin extends Item implements DispensibleContain
                 BlockState state = level.getBlockState(pos);
                 if (state.is(ModBlocks.DRIP_PAN) && state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.ON) {
                     level.setBlockAndUpdate(pos, state.setValue(ModProperties.ACTIVE_PROPERTY, ModProperties.ACTIVE_STATE.OFF));
+                    level.playSound(null, pos.getX()+0.5F, pos.getY()+0.5F, pos.getZ()+0.5F, SoundEvents.HONEY_BLOCK_BREAK, SoundSource.BLOCKS);
                     return InteractionResult.SUCCESS.heldItemTransformedTo(ItemUtils.createFilledResult(player.getItemInHand(hand), player, ModItems.HONEY_BUCKET.getDefaultInstance()));
                 }
             }

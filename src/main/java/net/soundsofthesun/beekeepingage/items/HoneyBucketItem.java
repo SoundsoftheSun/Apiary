@@ -1,6 +1,8 @@
 package net.soundsofthesun.beekeepingage.items;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -29,6 +31,7 @@ public class HoneyBucketItem extends BucketItem {
             BlockState state = level.getBlockState(pos);
             if (state.is(ModBlocks.DRIP_PAN) && state.getValue(ModProperties.ACTIVE_PROPERTY) == ModProperties.ACTIVE_STATE.OFF) {
                 level.setBlockAndUpdate(pos, state.setValue(ModProperties.ACTIVE_PROPERTY, ModProperties.ACTIVE_STATE.ON));
+                level.playSound(null, pos.getX()+0.5F, pos.getY()+0.5F, pos.getZ()+0.5F, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS);
                 return InteractionResult.SUCCESS.heldItemTransformedTo(ItemUtils.createFilledResult(player.getItemInHand(hand), player, Items.BUCKET.getDefaultInstance()));
             }
         }
